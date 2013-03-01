@@ -9,27 +9,25 @@ Composer 并非一个包管理器。 是的，它处理包（"packages"）或类
 默认地，它永远都不会再全局范围安装任何东西。
 所以，这是一个依赖管理器。
 
-This idea is not new and Composer is strongly inspired by node's [npm](http://npmjs.org/)
-and ruby's [bundler](http://gembundler.com/). But there has not been such a tool
-for PHP.
+Composer 的灵感并非新奇，它受到 node 的 [npm](http://npmjs.org/)
+和 ruby 的 [bundler](http://gembundler.com/) 的极大启发。 在PHP领域还没有这样一个工具。
 
-The problem that Composer solves is this:
+Composer 试图解决以下问题：
 
-a) You have a project that depends on a number of libraries.
+a) 你有一个项目，它依赖于许多类库。
 
-b) Some of those libraries depend on other libraries .
+b) 这些类库中的一些类库，还依赖于其他类库。
 
-c) You declare the things you depend on
+c) 由你来声明你所依赖的东西
 
-d) Composer finds out which versions of which packages need to be installed, and
-   installs them (meaning it downloads them into your project).
+d) Composer 会找到需要安装哪个版本、哪个包，并且把它们安装好（意思就是将他们下载到你的项目中）。
 
-## Declaring dependencies
+## 声明依赖
 
-Let's say you are creating a project, and you need a library that does logging.
-You decide to use [monolog](https://github.com/Seldaek/monolog). In order to
-add it to your project, all you need to do is create a `composer.json` file
-which describes the project's dependencies.
+我们举个例子，比如你正在创建一个项目，你需要一个用来logging的类库。
+你决定要使用 [monolog](https://github.com/Seldaek/monolog). 
+为了把它添加进你的项目中，你所需要做的只是创建一个 `composer.json` 文件，
+它描述了项目的依赖关系。
 
     {
         "require": {
@@ -37,22 +35,21 @@ which describes the project's dependencies.
         }
     }
 
-We are simply stating that our project requires some `monolog/monolog` package,
-any version beginning with `1.2`.
+我们只是简单地描述我们的项目要求 `monolog/monolog` 这个包，
+只要是以 `1.2` 版本号开头即可。
 
-## System Requirements
+## 系统要求
 
-Composer requires PHP 5.3.2+ to run. A few sensitive php settings and compile
-flags are also required, but the installer will warn you about any
-incompatibilities.
+Composer 需要 PHP 5.3.2+ 版本才能执行. 另外还需要一些敏感的PHP设置和编译选项，不过要是发生
+了兼容性问题，安装程序会警告你的。
 
-To install packages from sources instead of simple zip archives, you will need
-git, svn or hg depending on how the package is version-controlled.
+要从源码安装包而非从简单的zip档安装，
+你需要使用git, svn 或 hg ，这取决于你的包使用了哪一种版本控制系统。
 
-Composer is multi-platform and we strive to make it run equally well on Windows,
-Linux and OSX.
+Composer 是跨平台的，我们努力让它在 Windows,
+Linux 和 OSX 都能运行如一。
 
-## Installation - *nix
+## 安装 - *nix
 
 ### Downloading the Composer Executable
 
