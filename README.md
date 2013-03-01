@@ -33,32 +33,30 @@ Composer 是一个跟踪本地项目和类库依赖的依赖管理器。
 从源码安装
 -----------
 
-要运行测试，或开发 Composer 自身, you must use the sources and not the phar
-file as described above.
+要运行测试，或开发 Composer 自身, 你必须使用源码而不是上面介绍的phar文件。
 
-1. Run `git clone https://github.com/composer/composer.git`
-2. Download the [`composer.phar`](https://getcomposer.org/composer.phar) executable
-3. Run Composer to get the dependencies: `cd composer && php ../composer.phar install`
+1. 运行 `git clone https://github.com/composer/composer.git`
+2. 下载 [`composer.phar`](https://getcomposer.org/composer.phar) 可执行文件
+3. 运行 Composer 来获取依赖: `cd composer && php ../composer.phar install`
 
-You can now run Composer by executing the `bin/composer` script: `php /path/to/composer/bin/composer`
+现在你可以通过执行 `bin/composer` 脚本来运行 Composer : `php /path/to/composer/bin/composer`
 
-Global installation of Composer (manual)
-----------------------------------------
+Composer 全局安装(手动)
+-------------------------
 
-Since Composer works with the current working directory it is possible to install it
-in a system wide way.
+由于 Composer 是工作在当前目录下的，还可以把它安装在系统范围。
 
-1. Change into a directory in your path like `cd /usr/local/bin`
-2. Get Composer `curl -sS https://getcomposer.org/installer | php`
-3. Make the phar executable `chmod a+x composer.phar`
-4. Change into a project directory `cd /path/to/my/project`
-5. Use Composer as you normally would `composer.phar install`
-6. Optionally you can rename the composer.phar to composer to make it easier
+1. 改变目录 `cd /usr/local/bin`
+2. 获取 Composer `curl -sS https://getcomposer.org/installer | php`
+3. 让phar变为可执行 `chmod a+x composer.phar`
+4. 切换到项目路径 `cd /path/to/my/project`
+5. 使用 Composer 作为你通常使用的 `composer.phar install`
+6. 可选地，你可以把 composer.phar 重命名为 composer 以使它更为方便
 
-Global installation of Composer (via homebrew)
-----------------------------------------------
+Composer 全局安装(via homebrew)
+---------------------------------
 
-Composer is part of the homebrew-php project.
+Composer 是 homebrew-php 项目的一部分。
 
 1. Tap the homebrew-php repository into your brew installation if you haven't done yet: `brew tap josegonzalez/homebrew-php`
 2. Run `brew install josegonzalez/php/composer`.
