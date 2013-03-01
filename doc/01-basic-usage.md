@@ -56,7 +56,7 @@
 我们要求 monolog 的版本是 `1.0.*` 。 这意味着任何在 `1.0`
 开发分支的版本都是可以的。它会匹配 `1.0.0`, `1.0.2` 或 `1.0.20`。
 
-版本约束可以用集中不同方式来指定。
+版本约束可以用几种不同方式来指定：
 
 * **精确版本:** 你可以指定包的精确版本，比如 `1.0.2`.
 
@@ -67,25 +67,22 @@
 * **通配符:** 你可以用一个 `*` 通配符来指定一个匹配模式. `1.0.*` 对应于
    `>=1.0,<1.1`.
 
-* **下一个重要发布版 (Tilde Operator):** The `~` operator is best
-  explained by example: `~1.2` is equivalent to `>=1.2,<2.0`, while `~1.2.3` is
-  equivalent to `>=1.2.3,<1.3`. As you can see it is mostly useful for projects
-  respecting semantic versioning. A common usage would be to mark the minimum
-  minor version you depend on, like `~1.2` (which allows anything up to, but not
-  including, 2.0). Since in theory there should be no backwards compatibility
-  breaks until 2.0, that works well. Another way of looking at it is that using
-  `~` specifies a minimum version, but allows the last digit specified to go up.
+* **下一个重要发布版 (波浪操作符):**  `~` 操作符用这个例子来解释再好不过：
+  `~1.2` 对应于 `>=1.2,<2.0`,  `~1.2.3` 对应于
+  `>=1.2.3,<1.3`. 如你所见，它最常被用于那些含语义的版本。 
+  普遍用法是，标志出你需要依赖的最小版本号，比如像 `~1.2` (它允许了任何高于该版本, 
+  但是不包括 2.0 的版本). 因为理论上，直到 2.0 版本以前，都不会发生兼容性问题, 那样的话应该工作正常. 
+  另一种使用 `~` 的场景是用来指定一个最小版本，但是允许最新数字来指定以便升级。
 
-By default only stable releases are taken into consideration. If you would like
-to also get RC, beta, alpha or dev versions of your dependencies you can do
-so using [stability flags](04-schema.md#package-links). To change that for all
-packages instead of doing per dependency you can also use the
-[minimum-stability](04-schema.md#minimum-stability) setting.
+默认地， 只有稳定版本才需要考虑。 要是你还想获取到依赖包的
+RC, beta, alpha 或 dev 版本， 你可以使用[稳定性标识](04-schema.md#package-links)来达成. 
+要针对全部的包修改这一项，而不是只针对单个包，你可以使用
+[最小稳定性](04-schema.md#minimum-stability) 设置。
 
-## Installing Dependencies
+## 安装依赖包
 
-To fetch the defined dependencies into your local project, just run the
-`install` command of `composer.phar`.
+要将定义好的依赖包抓取到你的本地项目中来，只需运行 `composer.phar` 的
+`install` 命令。
 
     $ php composer.phar install
 
