@@ -59,16 +59,16 @@ Composer 全局安装(via homebrew)
 Composer 是 homebrew-php 项目的一部分。
 
 1. Tap the homebrew-php repository into your brew installation if you haven't done yet: `brew tap josegonzalez/homebrew-php`
-2. Run `brew install josegonzalez/php/composer`.
-3. Use Composer with the `composer` command.
+2. 运行 `brew install josegonzalez/php/composer`.
+3. 运行 `composer` 命令来使用Composer。
 
-Updating Composer
+更新 Composer
 -----------------
 
-Running `php composer.phar self-update` or equivalent will update a phar
-install with the latest version.
+执行 `php composer.phar self-update` 或对应地会更新一个phar，用最新的版本来安装的。
 
-Contributing
+
+贡献
 ------------
 
 All code contributions - including those of people having commit access -
@@ -83,7 +83,7 @@ which we borrowed from Symfony.
 
 If you would like to help take a look at the [list of issues](http://github.com/composer/composer/issues).
 
-Community
+社区
 ---------
 
 Mailing lists for [user support](http://groups.google.com/group/composer-users) and
@@ -95,12 +95,12 @@ for users and [#composer-dev](irc://irc.freenode.org/composer-dev) for developme
 Stack Overflow has a growing collection of
 [Composer related questions](http://stackoverflow.com/questions/tagged/composer-php).
 
-Requirements
+系统要求
 ------------
 
 PHP 5.3.2 or above (at least 5.3.4 recommended to avoid potential bugs)
 
-Authors
+作者
 -------
 
 Nils Adermann - <naderman@naderman.de> - <http://twitter.com/naderman> - <http://www.naderman.de><br />
@@ -108,12 +108,12 @@ Jordi Boggiano - <j.boggiano@seld.be> - <http://twitter.com/seldaek> - <http://s
 
 See also the list of [contributors](https://github.com/composer/composer/contributors) who participated in this project.
 
-License
+协议
 -------
 
 Composer is licensed under the MIT License - see the LICENSE file for details
 
-Acknowledgments
+鸣谢
 ---------------
 
 - This project's Solver started out as a PHP port of openSUSE's
