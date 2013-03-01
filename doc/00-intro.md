@@ -51,88 +51,87 @@ Linux 和 OSX 都能运行如一。
 
 ## 安装 - *nix
 
-### Downloading the Composer Executable
+### 下载 Composer 可执行文件
 
-#### Locally
+#### 本地
 
-To actually get Composer, we need to do two things. The first one is installing
-Composer (again, this means downloading it into your project):
+要获取 Composer, 我们需要做两件事。首先，安装
+Composer (再说一次，意思就是把它下载进你的项目中):
 
     $ curl -sS https://getcomposer.org/installer | php
 
-This will just check a few PHP settings and then download `composer.phar` to
-your working directory. This file is the Composer binary. It is a PHAR (PHP
-archive), which is an archive format for PHP which can be run on the command
-line, amongst other things.
+这个操作只会检查一些PHP设置，然后就会下载 `composer.phar` 到
+你的工作目录中。 该文件是 Composer 的二进制文件。 它是一个 PHAR （PHP的档案），
+这是一种PHP的档案格式，可以用来在命令行里执行。
 
-You can install Composer to a specific directory by using the `--install-dir`
-option and providing a target directory (it can be an absolute or relative path):
+你可以把 Composer 安装到一个特定的目录，只需使用 `--install-dir`
+选项，为它提供一个目标路径（绝对路径或相对路径都可以）：
 
     $ curl -sS https://getcomposer.org/installer | php -- --install-dir=bin
 
-#### Globally
+#### 全局
 
-You can place this file anywhere you wish. If you put it in your `PATH`,
-you can access it globally. On unixy systems you can even make it
-executable and invoke it without `php`.
+你可以把这个文件放在任何你想要的地方。
+如果你把它放在 `PATH` ，
+你就可以在全局访问它。 在unixy系统里，你甚至可以将它变为可执行的，
+并且可以不通过 `php` 来调用它。
 
-You can run these commands to easily access `composer` from anywhere on your system:
+你可以在系统的任何地方用这些命令来轻松访问 `composer` :
 
     $ curl -sS https://getcomposer.org/installer | php
     $ sudo mv composer.phar /usr/local/bin/composer
 
-Then, just run `composer` in order to run Composer instead of `php composer.phar`.
+接着, 只需执行 `composer` 以便运行 Composer 而非 `php composer.phar`.
 
-## Installation - Windows
+## 安装 - Windows
 
-### Using the Installer
+### 使用安装程序
 
-This is the easiest way to get Composer set up on your machine.
+这是将 Composer 设置在你的机器上的最简单的方法。
 
-Download and run [Composer-Setup.exe](https://getcomposer.org/Composer-Setup.exe),
-it will install the latest Composer version and set up your PATH so that you can
-just call `composer` from any directory in your command line.
+下载并执行 [Composer-Setup.exe](https://getcomposer.org/Composer-Setup.exe),
+它会安装最新版的 Composer ， 并设置你的 PATH 以便你在任何目录下，只需调用 `composer` 
+即可。
 
-### Manual Installation
+### 手动安装
 
-Change to a directory on your `PATH` and run the install snippet to download
+切换到你的 `PATH` 所在目录，然后执行安装脚本来下载
 composer.phar:
 
     C:\Users\username>cd C:\bin
     C:\bin>php -r "eval('?>'.file_get_contents('https://getcomposer.org/installer'));"
 
-Create a new `.bat` file alongside composer:
+创建一个新的 `.bat` 文件，跟 composer 放一起:
 
     C:\bin>echo @php "%~dp0composer.phar" %*>composer.bat
 
-Close your current terminal. Test usage with a new terminal:
+关闭当前的终端。 用一个新的终端来测试使用:
 
     C:\Users\username>composer -V
     Composer version 27d8904
 
     C:\Users\username>
 
-## Using Composer
+## 使用 Composer
 
-We will now use Composer to install the dependencies of the project. If you
-don't have a `composer.json` file in the current directory please skip to the
-[Basic Usage](01-basic-usage.md) chapter.
+现在我们使用 Composer 来安装项目的依赖包. 
+要是你的当前目录没有一个 `composer.json` 文件，请跳到
+[Basic Usage](01-basic-usage.md) 章节.
 
-To resolve and download dependencies, run the `install` command:
+要解析和下载依赖包，请执行 `install` 命令:
 
     $ php composer.phar install
 
-If you did a global install and do not have the phar in that directory
-run this instead:
+要是你在全局中进行了安装，就无需在目录中有该phar文件，就能直接运行:
 
     $ composer install
 
-Following the [example above](#declaring-dependencies), this will download
-monolog into the `vendor/monolog/monolog` directory.
+遵从 [上面的例子](#declaring-dependencies), 
+这会下载 monolog 到你的 `vendor/monolog/monolog` 目录。
 
-## Autoloading
+## 自动加载
 
-Besides downloading the library, Composer also prepares an autoload file that's
+除了下载类库外，Composer also prepares an autoload file that's
 capable of autoloading all of the classes in any of the libraries that it
 downloads. To use it, just add the following line to your code's bootstrap
 process:
