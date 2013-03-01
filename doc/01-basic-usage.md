@@ -86,35 +86,34 @@ RC, beta, alpha 或 dev 版本， 你可以使用[稳定性标识](04-schema.md#
 
     $ php composer.phar install
 
-This will find the latest version of `monolog/monolog` that matches the
-supplied version constraint and download it into the `vendor` directory.
-It's a convention to put third party code into a directory named `vendor`.
-In case of monolog it will put it into `vendor/monolog/monolog`.
+这条命令会寻找匹配当前版本约束条件的最新版本的 `monolog/monolog`,
+并将其下载到 `vendor` 目录中去。
+把第三方代码放置到命名为 `vendor` 的目录是一个约定俗成。
+拿 monolog 的例子来说，它会被放置到 `vendor/monolog/monolog` 目录中。
 
-> **Tip:** If you are using git for your project, you probably want to add
-> `vendor` into your `.gitignore`. You really don't want to add all of that
-> code to your repository.
+> **贴士:** 如果你使用 git 管理项目，你很可能想要将
+> `vendor` 添加到 `.gitignore` 文件中. 你可不想把所有那些代码
+> 添加到你的代码仓库里去吧.
 
-Another thing that the `install` command does is it adds a `composer.lock`
-file into your project root.
+`install` 命令所做的另一件事是， 它会创建一个 `composer.lock` 
+文件到你项目的根目录中。
 
-## `composer.lock` - The Lock File
+## `composer.lock` - 锁文件
 
-After installing the dependencies, Composer writes the list of the exact
-versions it installed into a `composer.lock` file. This locks the project
-to those specific versions.
+在安装完依赖包后， Composer 会编写出它所安装的精确版本的列表到
+一个 `composer.lock` 文件中。 它会把项目锁定到那些
+所指定的版本号上。
 
-**Commit your application's `composer.lock` (along with `composer.json`) into version control.**
+**Commit 你应用程序的 `composer.lock` (跟 `composer.json` 一起) 到你的版本控制仓库里**
 
-This is important because the `install` command checks if a lock file is present,
-and if it is, it downloads the versions specified there (regardless of what `composer.json`
-says). This means that anyone who sets up the project will download the exact
-same version of the dependencies.
+这很重要，因为 `install` 命令会检查是否存在一个 lock 文件,
+如果存在, 它就会下载在它里面指定的版本 (而毫不理睬 `composer.json`
+写了什么). 这意味着任何配置这个项目的人都会下载跟你相同版本的依赖包。
 
-If no `composer.lock` file exists, Composer will read the dependencies and
-versions from `composer.json` and  create the lock file.
+如果没有 `composer.lock` 这个文件, Composer 就会读取 `composer.json` 文件里面的依赖包和版本
+，然后创建这个 lock 文件。
 
-This means that if any of the dependencies get a new version, you won't get the updates
+这意味着，要是任何依赖包有了一个新的版本, you won't get the updates
 automatically. To update to the new version, use `update` command. This will fetch
 the latest matching versions (according to your `composer.json` file) and also update
 the lock file with the new version.
