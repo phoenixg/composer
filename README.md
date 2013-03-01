@@ -17,9 +17,7 @@ Composer 是一个跟踪本地项目和类库依赖的依赖管理器。
     ```
 
 
-2. 创建一个 composer.json 文件来定义你的依赖关系。 Note that this example is
-a short version for applications that are not meant to be published as packages
-themselves. To create libraries/packages please read the [guidelines](https://packagist.org/about).
+2. 创建一个 composer.json 文件来定义你的依赖关系。 注意，这个例子只是一个应用程序的小版本，不是为了发布为包自身。 To create libraries/packages please read the [guidelines](https://packagist.org/about).
 
     ``` json
     {
