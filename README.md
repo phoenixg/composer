@@ -17,7 +17,7 @@ Composer 是一个跟踪本地项目和类库依赖的依赖管理器。
     ```
 
 
-2. 创建一个 composer.json 文件来定义你的依赖关系。 注意，这个例子只是一个应用程序的小版本，不是为了发布为包自身。 To create libraries/packages please read the [guidelines](https://packagist.org/about).
+2. 创建一个 composer.json 文件来定义你的依赖关系。 注意，这个例子只是一个应用程序的小版本，不是为了发布为包自身。 如要创建类库/包，请阅读 [guidelines](https://packagist.org/about).
 
     ``` json
     {
@@ -27,13 +27,13 @@ Composer 是一个跟踪本地项目和类库依赖的依赖管理器。
     }
     ```
 
-3. Run Composer: `php composer.phar install`
-4. Browse for more packages on [Packagist](https://packagist.org).
+3. 运行 Composer: `php composer.phar install`
+4. 在这里浏览更多的包（packages ) [Packagist](https://packagist.org).
 
-Installation from Source
-------------------------
+从源码安装
+-----------
 
-To run tests, or develop Composer itself, you must use the sources and not the phar
+要运行测试，或开发 Composer 自身, you must use the sources and not the phar
 file as described above.
 
 1. Run `git clone https://github.com/composer/composer.git`
