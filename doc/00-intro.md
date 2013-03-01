@@ -131,14 +131,12 @@ composer.phar:
 
 ## 自动加载
 
-除了下载类库外，Composer also prepares an autoload file that's
-capable of autoloading all of the classes in any of the libraries that it
-downloads. To use it, just add the following line to your code's bootstrap
-process:
+除了下载类库外，Composer 还准备了一个自动加载文件，它有能力自动加载下载的任何类库。
+要使用它，只需在你的代码的引导过程中添加下面这行：
 
     require 'vendor/autoload.php';
 
-Woah! Now start using monolog! To keep learning more about Composer, keep
-reading the "Basic Usage" chapter.
+Woah! 现在就开始使用 monolog 吧！ 要继续学习 Composer，
+请阅读 "基本用法" 章节。
 
-[Basic Usage](01-basic-usage.md) &rarr;
+[基本用法](01-basic-usage.md) &rarr;
