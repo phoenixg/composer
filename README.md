@@ -1,23 +1,23 @@
-Composer - Dependency Management for PHP
-========================================
+Composer - PHP的依赖管理器
+==========================
 
-Composer is a dependency manager tracking local dependencies of your projects and libraries.
+Composer 是一个跟踪本地项目和类库依赖的依赖管理器。
 
-See [https://getcomposer.org/](https://getcomposer.org/) for more information and documentation.
+访问 [https://getcomposer.org/](https://getcomposer.org/) 以得到更多信息和文档。
 
 [![Build Status](https://secure.travis-ci.org/composer/composer.png?branch=master)](http://travis-ci.org/composer/composer)
 
-Installation / Usage
+安装 / 使用
 --------------------
 
-1. Download the [`composer.phar`](https://getcomposer.org/composer.phar) executable or use the installer.
+1. 下载 [`composer.phar`](https://getcomposer.org/composer.phar) 该可执行包或使用安装器。
 
     ``` sh
     $ curl -sS https://getcomposer.org/installer | php
     ```
 
 
-2. Create a composer.json defining your dependencies. Note that this example is
+2. 创建一个 composer.json 文件来定义你的依赖关系。 Note that this example is
 a short version for applications that are not meant to be published as packages
 themselves. To create libraries/packages please read the [guidelines](https://packagist.org/about).
 
