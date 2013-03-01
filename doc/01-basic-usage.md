@@ -1,38 +1,35 @@
-# Basic usage
+# 基本用法
 
-## Installation
+## 安装
 
-To install Composer, you just need to download the `composer.phar` executable.
+要安装 Composer， 你只需下载 `composer.phar` 可执行文件即可。
 
     $ curl -sS https://getcomposer.org/installer | php
 
-For the details, see the [Introduction](00-intro.md) chapter.
+更多详细信息请见 [介绍](00-intro.md) 章节。
 
-To check if Composer is working, just run the PHAR through `php`:
+要检查 Composer 是否正常工作, 只需用 `php` 运行 PHAR :
 
     $ php composer.phar
 
-This should give you a list of available commands.
+这条命令会显示一系列可以执行的命令来。
 
-> **Note:** You can also perform the checks only without downloading Composer
-> by using the `--check` option. For more information, just use `--help`.
+> **注意:** 你还可以在无需下载 Composer 的情况下执行这个检查：
+> 使用 `--check` 选项。 更多信息，使用 `--help`.
 >
 >     $ curl -sS https://getcomposer.org/installer | php -- --help
 
-## `composer.json`: Project Setup
+## `composer.json`: 项目设置
 
-To start using Composer in your project, all you need is a `composer.json`
-file. This file describes the dependencies of your project and may contain
-other metadata as well.
+要开始在你的项目里使用 Composer ，你所需的只是一个 `composer.json` 文件而已。
+该文件描述了你的项目的依赖，还可能包含其他的元信息。
 
-The [JSON format](http://json.org/) is quite easy to write. It allows you to
-define nested structures.
+[JSON 格式](http://json.org/) 相当容易编写。它允许你来定义嵌套的结构。
 
-### The `require` Key
+### `require` 键
 
-The first (and often only) thing you specify in `composer.json` is the
-`require` key. You're simply telling Composer which packages your project
-depends on.
+你在 `composer.json` 文件中首先（并且通常也是唯一）要指定的是
+`require` 键。 你只需简单告诉 Composer 你的项目依赖于的包是什么即可。
 
     {
         "require": {
@@ -40,41 +37,37 @@ depends on.
         }
     }
 
-As you can see, `require` takes an object that maps **package names** (e.g. `monolog/monolog`)
-to **package versions** (e.g. `1.0.*`).
+如你所见， `require` 包含了一个对象，它映射了 **包名称** (比如 `monolog/monolog`)
+至 **包版本** (比如 `1.0.*`).
 
-### Package Names
+### 包名称
 
-The package name consists of a vendor name and the project's name. Often these
-will be identical - the vendor name just exists to prevent naming clashes. It allows
-two different people to create a library named `json`, which would then just be
-named `igorw/json` and `seldaek/json`.
+包名称由vendor名称和项目名称所组成。 通常这些名称是唯一的 - vender 名称的存在
+是为了避免命名冲突。 它允许两个不同的人创建一个都叫做 `json` 的类库，
+这样它们就会命名成 `igorw/json` 和 `seldaek/json`。
 
-Here we are requiring `monolog/monolog`, so the vendor name is the same as the
-project's name. For projects with a unique name this is recommended. It also
-allows adding more related projects under the same namespace later on. If you
-are maintaining a library, this would make it really easy to split it up into
-smaller decoupled parts.
+现在，我们要求加载 `monolog/monolog`, 所以 vendor 名称和项目名称是相同的。
+我们推荐将项目名称命名成独一无二的。 它还允许在相同的命名空间下添加更多关联的项目。
+如果你在维护着一个类库， 这样做会使得你的项目被分割成更小的解耦单元。
 
-### Package Versions
 
-We are requiring version `1.0.*` of monolog. This means any version in the `1.0`
-development branch. It would match `1.0.0`, `1.0.2` or `1.0.20`.
+### 包版本
 
-Version constraints can be specified in a few different ways.
+我们要求 monolog 的版本是 `1.0.*` 。 这意味着任何在 `1.0`
+开发分支的版本都是可以的。它会匹配 `1.0.0`, `1.0.2` 或 `1.0.20`。
 
-* **Exact version:** You can specify the exact version of a package, for
-  example `1.0.2`.
+版本约束可以用集中不同方式来指定。
 
-* **Range:** By using comparison operators you can specify ranges of valid
-  versions. Valid operators are `>`, `>=`, `<`, `<=`, `!=`. An example range
-  would be `>=1.0`. You can define multiple ranges, separated by a comma:
+* **精确版本:** 你可以指定包的精确版本，比如 `1.0.2`.
+
+* **范围:** 通过使用比较操作符，你可以指定有效版本的范围。 有效的操作符是 `>`, `>=`, `<`, `<=`, `!=`. 一个范围的例子是
+  `>=1.0`. 你可以定义不同的范围，用逗号来分隔：
   `>=1.0,<2.0`.
 
-* **Wildcard:** You can specify a pattern with a `*` wildcard. `1.0.*` is the
-  equivalent of `>=1.0,<1.1`.
+* **通配符:** 你可以用一个 `*` 通配符来指定一个匹配模式. `1.0.*` 对应于
+   `>=1.0,<1.1`.
 
-* **Next Significant Release (Tilde Operator):** The `~` operator is best
+* **下一个重要发布版 (Tilde Operator):** The `~` operator is best
   explained by example: `~1.2` is equivalent to `>=1.2,<2.0`, while `~1.2.3` is
   equivalent to `>=1.2.3,<1.3`. As you can see it is mostly useful for projects
   respecting semantic versioning. A common usage would be to mark the minimum
