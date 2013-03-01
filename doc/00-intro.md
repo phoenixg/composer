@@ -1,15 +1,13 @@
-# Introduction
+# 介绍
 
-Composer is a tool for dependency management in PHP. It allows you to declare
-the dependent libraries your project needs and it will install them in your
-project for you.
+Composer 是一个PHP工具，用来管理依赖。 它允许你声明你的项目中需要的独立类库，它会为你安装它们到你的项目中。
 
-## Dependency management
+## 依赖管理
 
-Composer is not a package manager. Yes, it deals with "packages" or libraries, but
-it manages them on a per-project basis, installing them in a directory (e.g. `vendor`)
-inside your project. By default it will never install anything globally. Thus,
-it is a dependency manager.
+Composer 并非一个包管理器。 是的，它处理包（"packages"）或类库（libraries）, 
+但它用基于每个项目的方式来管理它们，把他们安装进一个目录（比如 `vendor`）在你的项目中。
+默认地，它永远都不会再全局范围安装任何东西。
+所以，这是一个依赖管理器。
 
 This idea is not new and Composer is strongly inspired by node's [npm](http://npmjs.org/)
 and ruby's [bundler](http://gembundler.com/). But there has not been such a tool
