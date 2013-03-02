@@ -1,17 +1,17 @@
-# Command-line interface
+# 命令行接口
 
-You've already learned how to use the command-line interface to do some
-things. This chapter documents all the available commands.
+你已经学习了如何使用命令行接口来做一些事情了
+. 本章列出了全部的命令。
 
-To get help from the command-line, simply call `composer` or `composer list`
-to see the complete list of commands, then `--help` combined with any of those
-can give you more information.
+要获取命令行的帮助信息, 只需调用 `composer` 或 `composer list`
+来查看完整的命令列表, 接着用 `--help` 结合其中的任何一个命令
+来获取更多信息。
 
-## Global Options
+## 全局选项
 
-The following options are available with every command:
+以下选项是每条命令都具有的:
 
-* **--verbose (-v):** Increase verbosity of messages.
+* **--verbose (-v):** 显示更加详细的信息.
 * **--help (-h):** Display help information.
 * **--quiet (-q):** Do not output any message.
 * **--no-interaction (-n):** Do not ask any interactive question.
