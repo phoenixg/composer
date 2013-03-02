@@ -26,36 +26,34 @@ vendor 命名是强制需要提供的。
 
 ## 平台包
 
-Composer 有平台包， which are virtual packages for things that are
-installed on the system but are not actually installable by composer. This
-includes PHP itself, PHP extensions and some system libraries.
+Composer 有平台包， 他们是安装在你系统上的虚拟包，
+而非实际可被 composer 安装的包。 它们包括了
+PHP 自身, PHP 的扩展（extensions） 和一些系统类库。
 
-* `php` represents the PHP version of the user, allowing you to apply
-   constraints, e.g. `>=5.4.0`. To require a 64bit version of php, you can
-   require the `php-64bit` package.
+* `php` 代表用户的 PHP 版本, 允许你应用约束条件
+   , 比如 `>=5.4.0`. 如果要求一个 64位版本的PHP, 你可以
+   要求 `php-64bit` 包.
 
-* `ext-<name>` allows you to require PHP extensions (includes core
-  extensions). Versioning can be quite inconsistent here, so it's often
-  a good idea to just set the constraint to `*`.  An example of an extension
-  package name is `ext-gd`.
+* `ext-<name>` 允许你要求 PHP 扩展 (包括核心
+  扩展). 这里的扩展版本可能经常反复不一, 所以通常
+  一个好的主意是只设置约束条件到 `*`.  一个扩展包名称的例子是
+  `ext-gd`.
 
-* `lib-<name>` allows constraints to be made on versions of libraries used by
-  PHP. The following are available: `curl`, `iconv`, `libxml`, `openssl`,
+* `lib-<name>` 允许你约束使用 PHP 制作的类库版本
+  . 这几个都是可以的: `curl`, `iconv`, `libxml`, `openssl`,
   `pcre`, `uuid`, `xsl`.
 
-You can use `composer show --platform` to get a list of your locally available
-platform packages.
+你还可以使用 `composer show --platform` 来获取本地可以获得的平台包的一个列表。
 
-## Specifying the version
+## 指定版本
 
-You need to specify the package's version some way. When you publish your
-package on Packagist, it is able to infer the version from the VCS (git, svn,
-hg) information, so in that case you do not have to specify it, and it is
-recommended not to. See [tags](#tags) and [branches](#branches) to see how
-version numbers are extracted from these.
+你需要用某些方法指定包的版本. 当你在 Packagist 发布包的时候, 
+可以通过 VCS (git, svn,
+hg) 来推测出版本信息, 假如是这样的情况， 你就无需指定它, 并且我们也推荐不要去指定. 
+见 [tags](#tags) 和 [branches](#branches) 以查看版本号是如何从中被抽取出来的。
 
-If you are creating packages by hand and really have to specify it explicitly,
-you can just add a `version` field:
+如果你正在手工创建包，并且必须要明确指定它的时候，
+你也只需添加一个 `version` 字段：
 
     {
         "version": "1.0.0"
@@ -63,11 +61,11 @@ you can just add a `version` field:
 
 ### Tags
 
-For every tag that looks like a version, a package version of that tag will be
-created. It should match 'X.Y.Z' or 'vX.Y.Z', with an optional suffix for RC,
-beta, alpha or patch.
+对于每一个看起来像一个版本的 tag , 对应于该 tag 的包版本也会被创建出来。
+它应该匹配 'X.Y.Z' 或 'vX.Y.Z' 这样的形式, 可选的还有 RC, beta, alpha 或 patch作为后缀。
 
-Here are a few examples of valid tag names:
+
+下面是一些有效的 tag 名称的例子:
 
     1.0.0
     v1.0.0
@@ -76,35 +74,34 @@ Here are a few examples of valid tag names:
     v2.0.0-alpha
     v2.0.4-p1
 
-> **Note:** If you specify an explicit version in `composer.json`, the tag name must match the specified version.
+> **注意:** 如果你在 `composer.json` 里面明确指定了版本号, tag 名称则必须匹配那个指定的版本。
 
 ### Branches
 
-For every branch, a package development version will be created. If the branch
-name looks like a version, the version will be `{branchname}-dev`. For example
-a branch `2.0` will get a version `2.0.x-dev` (the `.x` is added for technical
-reasons, to make sure it is recognized as a branch, a `2.0.x` branch would also
-be valid and be turned into `2.0.x-dev` as well. If the branch does not look
-like a version, it will be `dev-{branchname}`. `master` results in a
-`dev-master` version.
+对于每一个分支来讲, 都会创建一个包的开发版本. 如果分支名称看起来像一个版本，
+, 那么包版本就会是 `{branchname}-dev`. 比如说
+一个分支 `2.0` 将会得到一个版本 `2.0.x-dev` ( `.x` 出于技术原因会被加上
+, 以便保证它能被分支所认出,  `2.0.x` 分支也是有效的，它会被转成
+ `2.0.x-dev` . 如果分支看起来不像是一个版本
+, 它就会变成为 `dev-{branchname}`. 而 `master` 分支则会变成
+`dev-master` 版本.
 
-Here are some examples of version branch names:
+下面是一些分支版本的名称:
 
     1.x
     1.0 (equals 1.0.x)
     1.1.x
 
-> **Note:** When you install a dev version, it will install it from source.
+> **注意:** 当你安装一个 dev 版本时， 会通过源代码来安装它。
 
-### Aliases
+### 别名
 
-It is possible alias branch names to versions. For example, you could alias
-`dev-master` to `1.0.x-dev`, which would allow you to require `1.0.x-dev` in all
-the packages.
+还有可能，你会把分支名称的别名指向版本. 比如， 你会把别名
+`dev-master` 指向 `1.0.x-dev`, 这会允许你在所有的包里要求 `1.0.x-dev` 。
 
-See [Aliases](articles/aliases.md) for more information.
+见 [别名](articles/aliases.md) 查看更多信息.
 
-## Lock file
+## 锁文件（ Lock file ）
 
 For your library you may commit the `composer.lock` file if you want to. This
 can help your team to always test against the same dependency versions.
