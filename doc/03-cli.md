@@ -12,32 +12,31 @@
 以下选项是每条命令都具有的:
 
 * **--verbose (-v):** 显示更加详细的信息.
-* **--help (-h):** Display help information.
-* **--quiet (-q):** Do not output any message.
-* **--no-interaction (-n):** Do not ask any interactive question.
-* **--working-dir (-d):** If specified, use the given directory as working directory.
-* **--profile:** Display timing and memory usage information
-* **--ansi:** Force ANSI output.
-* **--no-ansi:** Disable ANSI output.
-* **--version (-V):** Display this application version.
+* **--help (-h):** 显示帮助信息.
+* **--quiet (-q):** 不要输出任何消息.
+* **--no-interaction (-n):** 不要询问任何交互的问题.
+* **--working-dir (-d):** 如果指定了，就是用指定的路径为工作路径.
+* **--profile:** 显示时间和内存使用情况
+* **--ansi:** 强制 ANSI 输出.
+* **--no-ansi:** 禁用 ANSI 输出.
+* **--version (-V):** 显示该应用程序版本.
 
-## init
+## 初始化
 
-In the [Libraries](02-libraries.md) chapter we looked at how to create a
-`composer.json` by hand. There is also an `init` command available that makes
-it a bit easier to do this.
+在 [类库](02-libraries.md) 章节我们查看了如何手工创建一个
+`composer.json` . 其实还有一个 `init` 命令， 让做这件事变得更为简单.
 
-When you run the command it will interactively ask you to fill in the fields,
-while using some smart defaults.
+当你运行这条命令时， 它会交互性地询问你填写字段,
+同时可以使用一些聪明的默认值.
 
     $ php composer.phar init
 
-### Options
+### 选项
 
-* **--name:** Name of the package.
-* **--description:** Description of the package.
-* **--author:** Author name of the package.
-* **--homepage:** Homepage of the package.
+* **--name:** 包的名称
+* **--description:** 包的描述
+* **--author:** 包的作者名称
+* **--homepage:** 包的主页
 * **--require:** Package to require with a version constraint. Should be
   in format `foo/bar:1.0.0`.
 * **--require-dev:** Development requirements, see **--require**.
