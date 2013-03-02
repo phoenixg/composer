@@ -6,11 +6,9 @@
 
 一旦你的目录中有了一个 `composer.json` , 那么这个目录就是一个
 包. 当你添加一个 `require` 到项目中去时, 你就在制作一个依赖于其他包的包. 
-The only difference between your project and
-libraries is that your project is a package without a name.
+你的项目和类库之间的唯一区别是，你的项目是一个没有名称的包。
 
-In order to make that package installable you need to give it a name. You do
-this by adding a `name` to `composer.json`:
+为了让这个包可被安装，你需要给他命名一个名称。添加一个 `name` 到 `composer.json` 中:
 
     {
         "name": "acme/hello-world",
@@ -19,16 +17,16 @@ this by adding a `name` to `composer.json`:
         }
     }
 
-In this case the project name is `acme/hello-world`, where `acme` is the
-vendor name. Supplying a vendor name is mandatory.
+这里例子里， 项目名称是 `acme/hello-world`, 而 `acme` 是 vendor 名称。
+vendor 命名是强制需要提供的。
 
-> **Note:** If you don't know what to use as a vendor name, your GitHub
-username is usually a good bet. While package names are case insensitive, the
-convention is all lowercase and dashes for word separation.
+> **注意:** 如果你不知道该把什么当作 vendor 名称, 就用你的 GitHub
+用户名， 这通常是一个好主意. 包名称是大小写不敏感的, 约定俗成的做法是
+全部都小写，用短中杠（dashes）来分割单词。
 
-## Platform packages
+## 平台包
 
-Composer has platform packages, which are virtual packages for things that are
+Composer 有平台包， which are virtual packages for things that are
 installed on the system but are not actually installable by composer. This
 includes PHP itself, PHP extensions and some system libraries.
 
