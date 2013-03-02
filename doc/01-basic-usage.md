@@ -113,50 +113,47 @@ RC, beta, alpha 或 dev 版本， 你可以使用[稳定性标识](04-schema.md#
 如果没有 `composer.lock` 这个文件, Composer 就会读取 `composer.json` 文件里面的依赖包和版本
 ，然后创建这个 lock 文件。
 
-这意味着，要是任何依赖包有了一个新的版本, you won't get the updates
-automatically. To update to the new version, use `update` command. This will fetch
-the latest matching versions (according to your `composer.json` file) and also update
-the lock file with the new version.
+这意味着，要是任何依赖包有了一个新的版本, 你并不会得到自动的更新.
+要更新至新的版本， 可使用 `update` 命令。 这条命令会抓取
+最新匹配的版本 (根据你的 `composer.json` 文件) ，并且用最新版本的信息更新 lock 文件。
 
     $ php composer.phar update
 
-> **Note:** For libraries it is not necessarily recommended to commit the lock file,
-> see also: [Libraries - Lock file](02-libraries.md#lock-file).
+> **注意:** 对于类库来说，没有必要提交 lock 文件，
+> 另见: [类库 - Lock 文件](02-libraries.md#lock-file).
 
 ## Packagist
 
-[Packagist](https://packagist.org/) is the main Composer repository. A Composer
-repository is basically a package source: a place where you can get packages
-from. Packagist aims to be the central repository that everybody uses. This
-means that you can automatically `require` any package that is available
-there.
+[Packagist](https://packagist.org/) 是主要的 Composer 仓库. 一个 Composer
+仓库基本上就是一个包源: 这是一个你可以获取包的地方.
+Packagist 致力于聚集每个人使用的仓库. 这
+表示你可以自动 `require` 在那里的任何包。
 
-If you go to the [packagist website](https://packagist.org/) (packagist.org),
-you can browse and search for packages.
+如果你访问 [packagist 网站](https://packagist.org/) (packagist.org),
+你可以浏览和搜索包。
 
-Any open source project using Composer should publish their packages on
-packagist. A library doesn't need to be on packagist to be used by Composer,
-but it makes life quite a bit simpler.
+任何使用 Composer 的项目都应该把他们的包发布到
+packagist. 如果要使用 Composer 的类库，并非一定要将其发布到 packagist ,
+但这让事情变得容易得多。
 
-## Autoloading
+## 自动加载
 
-For libraries that specify autoload information, Composer generates a
-`vendor/autoload.php` file. You can simply include this file and you
-will get autoloading for free.
+对于指定自动加载信息的类库来说, Composer 会生成一个
+`vendor/autoload.php` 文件. 你可以简单地引用这个文件，
+然后你就可以自由地自动加载了。
 
     require 'vendor/autoload.php';
 
-This makes it really easy to use third party code. For example: If your
-project depends on monolog, you can just start using classes from it, and they
-will be autoloaded.
+这使得使用第三方代码变得非常容易. 比如: 如果
+你的项目依赖于 monolog， 你只需要在里面使用类库, 他们都会自动被加载。
 
     $log = new Monolog\Logger('name');
     $log->pushHandler(new Monolog\Handler\StreamHandler('app.log', Monolog\Logger::WARNING));
 
     $log->addWarning('Foo');
 
-You can even add your own code to the autoloader by adding an `autoload` field
-to `composer.json`.
+你甚至还可以给 autoloader 添加自己的代码， 只需添加给  `composer.json` 文件添加一个 `autoload` 字段即可。
+
 
     {
         "autoload": {
@@ -164,30 +161,29 @@ to `composer.json`.
         }
     }
 
-Composer will register a
+Composer 会为 `Acme` 命名空间注册一个
 [PSR-0](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md)
-autoloader for the `Acme` namespace.
+自动加载器。
 
-You define a mapping from namespaces to directories. The `src` directory would
-be in your project root, on the same level as `vendor` directory is. An example
-filename would be `src/Acme/Foo.php` containing an `Acme\Foo` class.
+你定义一个命名空间和路径的对应关系.  `src` 目录
+就是你项目的根目录，跟 `vendor` 目录是同一级的目录. 举个例子，
+文件名是 `src/Acme/Foo.php` ，就包含一个 `Acme\Foo` class.
 
-After adding the `autoload` field, you have to re-run `install` to re-generate
-the `vendor/autoload.php` file.
+在添加完 `autoload` 字段以后, 你必须重新执行 `install` 命令来重新生成
+ `vendor/autoload.php` 文件.
 
-Including that file will also return the autoloader instance, so you can store
-the return value of the include call in a variable and add more namespaces.
-This can be useful for autoloading classes in a test suite, for example.
+引用该文件还会返回 autoloader 实例, 这样你就能够将引用调用存储到一个变量中去，
+以便添加更多的命名空间。
+这对于在一个测试案例里自动加载多个类来说很有用, 比如。
 
     $loader = require 'vendor/autoload.php';
     $loader->add('Acme\Test', __DIR__);
 
-In addition to PSR-0 autoloading, classmap is also supported. This allows
-classes to be autoloaded even if they do not conform to PSR-0. See the
-[autoload reference](04-schema.md#autoload) for more details.
+除了 PSR-0 autoloading 之外, 还支持类图. 这允许即使类不符合 PSR-0 一样能够自动加载. 参见
+[autoload 参考](04-schema.md#autoload) 以获取更多信息.
 
-> **Note:** Composer provides its own autoloader. If you don't want to use
-that one, you can just include `vendor/composer/autoload_namespaces.php`,
-which returns an associative array mapping namespaces to directories.
+> **注意:** Composer 提供了它自己的 autoloader. 如果你不想用那玩意儿，
+你只需要引用 `vendor/composer/autoload_namespaces.php`,
+它会返回一个映射命名空间和路径的关联数组。
 
-&larr; [Intro](00-intro.md)  |  [Libraries](02-libraries.md) &rarr;
+&larr; [介绍](00-intro.md)  |  [类库](02-libraries.md) &rarr;
