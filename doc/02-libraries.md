@@ -1,12 +1,12 @@
-# Libraries
+# 类库
 
-This chapter will tell you how to make your library installable through composer.
+本章节会告诉你如何制作可以通过 composer 来安装的自己的类库。
 
-## Every project is a package
+## 每个项目都是一个包（package）
 
-As soon as you have a `composer.json` in a directory, that directory is a
-package. When you add a `require` to a project, you are making a package that
-depends on other packages. The only difference between your project and
+一旦你的目录中有了一个 `composer.json` , 那么这个目录就是一个
+包. 当你添加一个 `require` 到项目中去时, 你就在制作一个依赖于其他包的包. 
+The only difference between your project and
 libraries is that your project is a package without a name.
 
 In order to make that package installable you need to give it a name. You do
