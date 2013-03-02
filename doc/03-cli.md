@@ -37,125 +37,115 @@
 * **--description:** 包的描述
 * **--author:** 包的作者名称
 * **--homepage:** 包的主页
-* **--require:** Package to require with a version constraint. Should be
-  in format `foo/bar:1.0.0`.
-* **--require-dev:** Development requirements, see **--require**.
-* **--stability (-s):** Value for the `minimum-stability` field.
+* **--require:** 要求一个版本约束条件的包. 应该是
+  以 `foo/bar:1.0.0` 格式.
+* **--require-dev:** 开发要求, 见 **--require**.
+* **--stability (-s):**  `minimum-stability` 字段的值
 
-## install
+## 安装
 
-The `install` command reads the `composer.json` file from the current
-directory, resolves the dependencies, and installs them into `vendor`.
+`install` 命令会读取当前目录下的 `composer.json` 文件
+, 解析其依赖包, 然后将其安装进 `vendor`.
 
     $ php composer.phar install
 
-If there is a `composer.lock` file in the current directory, it will use the
-exact versions from there instead of resolving them. This ensures that
-everyone using the library will get the same versions of the dependencies.
+如果在当前目录下存在一个 `composer.lock` 文件, 那么它会使用这个文件中的
+准确版本而非解析它们. 这确保了每个使用该类库的人
+都会获取到相同的依赖包.
 
-If there is no `composer.lock` file, composer will create one after dependency
-resolution.
+如果不存在 `composer.lock` 文件, composer 就会在解析完依赖包后创建这个文件.
 
-### Options
+### 选项
 
-* **--prefer-source:** There are two ways of downloading a package: `source`
-  and `dist`. For stable versions composer will use the `dist` by default.
-  The `source` is a version control repository. If `--prefer-source` is
-  enabled, composer will install from `source` if there is one. This is
-  useful if you want to make a bugfix to a project and get a local git
-  clone of the dependency directly.
-* **--prefer-dist:** Reverse of `--prefer-source`, composer will install
-  from `dist` if possible. This can speed up installs substantially on build
-  servers and other use cases where you typically do not run updates of the
-  vendors. It is also a way to circumvent problems with git if you do not
-  have a proper setup.
-* **--dry-run:** If you want to run through an installation without actually
-  installing a package, you can use `--dry-run`. This will simulate the
-  installation and show you what would happen.
-* **--dev:** By default composer will only install required packages. By
-  passing this option you can also make it install packages referenced by
-  `require-dev`.
-* **--no-scripts:** Skips execution of scripts defined in `composer.json`.
-* **--no-custom-installers:** Disables custom installers.
-* **--no-progress:** Removes the progress display that can mess with some
-  terminals or scripts which don't handle backspace characters.
-* **--optimize-autoloader (-o):** Convert PSR-0 autoloading to classmap to get a faster
-  autoloader. This is recommended especially for production, but can take
-  a bit of time to run so it is currently not done by default.
+* **--prefer-source:** 有两种方式可以下载一个包: `source`
+  和 `dist`. 对于稳定版本， composer 将会默认使用 `dist`.
+  `source` 是一个版本控制仓库. 如果开启了 `--prefer-source` 
+  , composer 会从 `source` 安装. 如果你想修复一个项目的bug
+  ，并且直接获取一个依赖包的本地git克隆的话，这非常有用.
+* **--prefer-dist:** 同 `--prefer-source` 相反, composer 会从
+  `dist` 安装. 这会大幅加速服务器上的安装，以及其他你无需更新 vendors 的用例. 
+  这还是一个当你没有正确设置时可以绕开git问题的方法.
+* **--dry-run:** 如果你想要运行一个实际上没有安装一个包的安装
+  , 你可以使用 `--dry-run`. 这条命令会模拟
+  安装进程， 向你显示会发生什么事情的信息.
+* **--dev:** 默认地, composer 只会安装要求的包. 通过
+  传递该参数， 你还可以让它安装由
+  `require-dev`引用的包.
+* **--no-scripts:** 跳过在 `composer.json` 里的执行脚本.
+* **--no-custom-installers:** 禁用自定义的安装程序.
+* **--no-progress:** 移除过程显示， 因为它们在一些终端或脚本里不能很好地处理回退字符.
+* **--optimize-autoloader (-o):** 将 PSR-0 的自动加载转换为类图，以便获得更快的自动加载器
+  . 推荐在生产环境下使用此项, 但是可能需要花些时间来运行的缘故
+  ,所以默认没有使用此选项。
 
-## update
+## 更新
 
-In order to get the latest versions of the dependencies and to update the
-`composer.lock` file, you should use the `update` command.
+为了获取最新版本的依赖包，更新
+`composer.lock` 文件, 你应该使用 `update` 命令.
 
     $ php composer.phar update
 
-This will resolve all dependencies of the project and write the exact versions
-into `composer.lock`.
+这条命令会解析你的项目的全部依赖包，然后将精确的版本写入
+ `composer.lock`.
 
-If you just want to update a few packages and not all, you can list them as such:
+如果你只想要更新一些包而不是全部, 你可以像这样列出它们来:
 
     $ php composer.phar update vendor/package vendor/package2
 
-You can also use wildcards to update a bunch of packages at once:
+你还可以使用通配符来一次性更新一打的包:
 
     $ php composer.phar update vendor/*
 
-### Options
+### 选项
 
-* **--prefer-source:** Install packages from `source` when available.
-* **--prefer-dist:** Install packages from `dist` when available.
-* **--dry-run:** Simulate the command without actually doing anything.
-* **--dev:** Install packages listed in `require-dev`.
-* **--no-scripts:** Skips execution of scripts defined in `composer.json`.
-* **--no-custom-installers:** Disables custom installers.
-* **--no-progress:** Removes the progress display that can mess with some
-  terminals or scripts which don't handle backspace characters.
-* **--optimize-autoloader (-o):** Convert PSR-0 autoloading to classmap to get a faster
-  autoloader. This is recommended especially for production, but can take
-  a bit of time to run so it is currently not done by default.
+* **--prefer-source:** 如果可以，就安装来自 `source` 的包
+* **--prefer-dist:** 如果可以，就安装来自 `dist` 的包
+* **--dry-run:** 模拟而非实际执行命令
+* **--dev:** 安装在 `require-dev` 里列出的包
+* **--no-scripts:** 跳过在 `composer.json` 里定义的执行脚本
+* **--no-custom-installers:** 禁止自定义的安装程序
+* **--no-progress:** 移除可能在一些终端或脚本中因为无法很好地处理回退字符而导致的过程显示信息.
+* **--optimize-autoloader (-o):** 将 PSR-0 自动加载转换为类图，以便得到一个更快的自动加载器
+  . 推荐在生产环境中使用此选项，因为它需要一些时间来执行，
+  所以没有被默认开启.
 
-## require
+## 要求
 
-The `require` command adds new packages to the `composer.json` file from
-the current directory.
+`require` 命令会把当前目录下的新包添加进 `composer.json` 文件.
 
     $ php composer.phar require
 
-After adding/changing the requirements, the modified requirements will be
-installed or updated.
+在添加/改变要求之后, 所修改过的要求会被安装或更新.
 
-If you do not want to choose requirements interactively, you can just pass them
-to the command.
+如果你不想交互地选择requirements, 你还可以把它们传递给命令.
 
     $ php composer.phar require vendor/package:2.* vendor/package2:dev-master
 
-### Options
+### 选项
 
 * **--prefer-source:** Install packages from `source` when available.
 * **--prefer-dist:** Install packages from `dist` when available.
-* **--dev:** Add packages to `require-dev`.
-* **--no-update:** Disables the automatic update of the dependencies.
+* **--dev:** 添加包到 `require-dev` 里.
+* **--no-update:** 禁用依赖包的自动更新.
 * **--no-progress:** Removes the progress display that can mess with some
   terminals or scripts which don't handle backspace characters.
 
-## search
+## 搜索
 
-The search command allows you to search through the current project's package
-repositories. Usually this will be just packagist. You simply pass it the
-terms you want to search for.
+搜索命令允许你在当前项目的包仓库中进行搜索
+. 通常来说，这就是指 packagist. 你只要给它传递你想要搜索的词即可.
 
     $ php composer.phar search monolog
 
-You can also search for more than one term by passing multiple arguments.
+你还可以通过传递多个参数来搜索多个词.
 
-### Options
+### 选项
 
-* **--only-name (-N):** Search only in name.
+* **--only-name (-N):** 只用名称来搜索.
 
-## show
+## 显示
 
-To list all of the available packages, you can use the `show` command.
+要列出全部可被获取的包, 你可以使用 `show` 命令.
 
     $ php composer.phar show
 
