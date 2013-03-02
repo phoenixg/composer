@@ -103,26 +103,25 @@ hg) 来推测出版本信息, 假如是这样的情况， 你就无需指定它,
 
 ## 锁文件（ Lock file ）
 
-For your library you may commit the `composer.lock` file if you want to. This
-can help your team to always test against the same dependency versions.
-However, this lock file will not have any effect on other projects that depend
-on it. It only has an effect on the main project.
+你可以为你的类库提交 `composer.lock` 文件，如果你想这么做的话. 这
+会帮助你的团队永远在相同的依赖版本下测试。
+然而， 这个锁文件并不会对依赖于它的其他项目起到效果.
+它只会对主项目起到效果。
 
-If you do not want to commit the lock file and you are using git, add it to
-the `.gitignore`.
+如果你不想提交锁文件， 并且你正在使用 git ，那么请把它添加进
+`.gitignore`.
 
-## Publishing to a VCS
+## 发布到 VCS
 
-Once you have a vcs repository (version control system, e.g. git) containing a
-`composer.json` file, your library is already composer-installable. In this
-example we will publish the `acme/hello-world` library on GitHub under
-`github.com/composer/hello-world`.
+一旦你在vcs（版本控制系统，比如 git）的仓库里面包含了
+`composer.json` 文件, 那么你的类库就已经是可被 composer 安装了的啦. 在这个例子里
+我们会发布 `acme/hello-world` 类库到 GitHub 的
+`github.com/composer/hello-world` 上。
 
-Now, To test installing the `acme/hello-world` package, we create a new
-project locally. We will call it `acme/blog`. This blog will depend on
-`acme/hello-world`, which in turn depends on `monolog/monolog`. We can
-accomplish this by creating a new `blog` directory somewhere, containing a
-`composer.json`:
+现在, 为了测试 `acme/hello-world` 包的安装, 我们来在本地创建一个
+项目. 我们叫它为 `acme/blog`. 这个博客将会依赖于
+`acme/hello-world`, 而这个东西接着又依赖于 `monolog/monolog`. 我们可以通过在某个地方
+创建一个包含 `composer.json` 的新的 `blog` 目录来达成这个任务:
 
     {
         "name": "acme/blog",
@@ -131,13 +130,12 @@ accomplish this by creating a new `blog` directory somewhere, containing a
         }
     }
 
-The name is not needed in this case, since we don't want to publish the blog
-as a library. It is added here to clarify which `composer.json` is being
-described.
+这里名称（name）并非必须, 因为我们并没有打算要把这个博客发布为一个类库
+. 这里添加它是为了区分正在描述的是哪个 `composer.json` 。
 
-Now we need to tell the blog app where to find the `hello-world` dependency.
-We do this by adding a package repository specification to the blog's
-`composer.json`:
+现在我们需要告诉这个博客应用程序到哪里去找到这个 `hello-world` 依赖。
+我们通过添加一个包仓库指定到博客的
+`composer.json` 文件:
 
     {
         "name": "acme/blog",
@@ -152,35 +150,34 @@ We do this by adding a package repository specification to the blog's
         }
     }
 
-For more details on how package repositories work and what other types are
-available, see [Repositories](05-repositories.md).
+要获取更多关于包仓库如何工作，以及还有什么其他的类型，详见
+ [仓库](05-repositories.md).
 
-That's all. You can now install the dependencies by running composer's
-`install` command!
+就是这样了. 你现在可以运行 composer 的
+`install` 命令来安装依赖了！
 
-**Recap:** Any git/svn/hg repository containing a `composer.json` can be added
-to your project by specifying the package repository and declaring the
-dependency in the `require` field.
+**重申:** 任何包含有一个 `composer.json` 的 git/svn/hg 仓库都可以通过指定包仓库和在 `require` 字段中
+声明依赖添加进你的项目里。
 
-## Publishing to packagist
+## 发布到 packagist
 
-Alright, so now you can publish packages. But specifying the vcs repository
-every time is cumbersome. You don't want to force all your users to do that.
+好了, 现在你可以发布包了. 但是每次都指定 vcs 仓库有点不方便
+. 你可不想强制所有的用户那么做.
 
-The other thing that you may have noticed is that we did not specify a package
-repository for `monolog/monolog`. How did that work? The answer is packagist.
+另一件你可能注意到的事是， 我们没有为
+`monolog/monolog` 指定一个包仓库. 它是如何工作的呢？ 答案是 packagist.
 
-[Packagist](https://packagist.org/) is the main package repository for
-composer, and it is enabled by default. Anything that is published on
-packagist is available automatically through composer. Since monolog
-[is on packagist](https://packagist.org/packages/monolog/monolog), we can depend
-on it without having to specify any additional repositories.
+[Packagist](https://packagist.org/) 是 composer 的主要的包仓库
+, 默认被开启. 任何在
+packagist 上发布的包都是可通过 composer 被自动获取的。 由于 monolog
+[已经发布到 packagist](https://packagist.org/packages/monolog/monolog), 我们才得以
+无需指定任何额外的仓库就能依赖它。
 
-If we wanted to share `hello-world` with the world, we would publish it on
-packagist as well. Doing so is really easy.
+如果我们想要同全世界分享 `hello-world` , 我们也会把它发布到
+packagist. 做这件事相当的容易。
 
-You simply hit the big "Submit Package" button and sign up. Then you submit
-the URL to your VCS repository, at which point packagist will start crawling
-it. Once it is done, your package will be available to anyone.
+你只需要点击大大的 "Submit Package" 按钮，并且注册用户. 然后你提交
+你的 VCS 仓库的 URL, 接着 packagist 就会开始抓取它
+. 一旦抓取完成, 你的包就可以让任何人下载了。
 
-&larr; [Basic usage](01-basic-usage.md) |  [Command-line interface](03-cli.md) &rarr;
+&larr; [基本用法](01-basic-usage.md) |  [命令行接口](03-cli.md) &rarr;
