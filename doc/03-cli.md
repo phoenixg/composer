@@ -335,64 +335,63 @@
 
 ### COMPOSER
 
-By setting the `COMPOSER` env variable it is possible to set the filename of
-`composer.json` to something else.
+通过设置 `COMPOSER` 环境变量，就可以把
+`composer.json` 的文件名设置成别的.
 
-For example:
+比如:
 
     $ COMPOSER=composer-other.json php composer.phar install
 
 ### COMPOSER_ROOT_VERSION
 
-By setting this var you can specify the version of the root package, if it can
-not be guessed from VCS info and is not present in `composer.json`.
+通过设置这个变量，你可以指定 root 包的版本, 如果从
+VCS 信息猜不出版本并且在 `composer.json` 里没有指定的话可以用这个.
 
 ### COMPOSER_VENDOR_DIR
 
-By setting this var you can make composer install the dependencies into a
-directory other than `vendor`.
+通过设置这个变量，你可以让 composer 把依赖包安装进另一个名称的目录，而非
+`vendor`.
 
 ### COMPOSER_BIN_DIR
 
-By setting this option you can change the `bin` ([Vendor Binaries](articles/vendor-binaries.md))
-directory to something other than `vendor/bin`.
+通过设置这个选项，你可以改变 `bin` ([Vendor Binaries](articles/vendor-binaries.md))
+目录为其他的，而不是 `vendor/bin`.
 
-### http_proxy or HTTP_PROXY
+### http_proxy 或 HTTP_PROXY
 
-If you are using composer from behind an HTTP proxy, you can use the standard
-`http_proxy` or `HTTP_PROXY` env vars. Simply set it to the URL of your proxy.
-Many operating systems already set this variable for you.
+如果你正通过HTTP代理使用 composer, 你可以使用这个标准的
+`http_proxy` 或 `HTTP_PROXY` 环境变量. 简单地将其设置为你的代理的URL即可.
+许多操作系统已经为你设置了该变量了.
 
-Using `http_proxy` (lowercased) or even defining both might be preferable since
-some tools like git or curl will only use the lower-cased `http_proxy` version.
-Alternatively you can also define the git proxy using
+使用 `http_proxy` (小写) 或者甚至两个都定义一遍比较好，因为
+有些工具，像 git 或 curl 只会使用小写 `http_proxy` 的版本。
+此外，你还可以定义 git 代理的设置，如
 `git config --global http.proxy <proxy url>`.
 
 ### COMPOSER_HOME
 
-The `COMPOSER_HOME` var allows you to change the composer home directory. This
-is a hidden, global (per-user on the machine) directory that is shared between
-all projects.
+`COMPOSER_HOME` 变量允许你改变 composer 的 home 目录. 这
+是一个隐藏的, 全局的 (机器的每个用户都能访问) 路径，该目录被每个项目都能共享.
 
-By default it points to `/home/<user>/.composer` on *nix,
-`/Users/<user>/.composer` on OSX and
-`C:\Users\<user>\AppData\Roaming\Composer` on Windows.
+默认地，在 *nix 系统上，它指向 `/home/<user>/.composer`,
+在 OSX 上是 `/Users/<user>/.composer`  ，
+在 Windows 上是 `C:\Users\<user>\AppData\Roaming\Composer`.
 
 #### COMPOSER_HOME/config.json
 
-You may put a `config.json` file into the location which `COMPOSER_HOME` points
-to. Composer will merge this configuration with your project's `composer.json`
-when you run the `install` and `update` commands.
+你可以把一个 `config.json` 文件放在 `COMPOSER_HOME` 指向的路径中
+. Composer 会把它跟你的项目的 `composer.json` 文件进行合并，
+当你运行 `install` 和 `update` 命令时.
 
-This file allows you to set [configuration](04-schema.md#config) and
-[repositories](05-repositories.md) for the user's projects.
+该文件允许你为用户的项目设置 [配置](04-schema.md#config) 和
+[仓库](05-repositories.md).
 
-In case global configuration matches _local_ configuration, the _local_
-configuration in the project's `composer.json` always wins.
+如果说全局的配置存在 _local_ 配置, 那么
+项目中的 `composer.json` 文件中的 _local_ 配置永远优先级更高.
 
 ### COMPOSER_PROCESS_TIMEOUT
 
-This env var controls the time composer waits for commands (such as git
-commands) to finish executing. The default value is 300 seconds (5 minutes).
+该环境变量控制 composer 等待命令完成执行所花的时间 (比如 git 
+命令) . 默认值是 300 秒 (5 分钟).
 
-&larr; [Libraries](02-libraries.md)  |  [Schema](04-schema.md) &rarr;
+&larr; [类库](02-libraries.md)  |  [Schema](04-schema.md) &rarr;
