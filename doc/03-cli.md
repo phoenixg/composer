@@ -270,76 +270,68 @@
 
 ## 创建项目
 
-你可以使用 Composer 从一个已存在的包来创建新的项目. This is
-the equivalent of doing a git clone/svn checkout followed by a composer install
-of the vendors.
+你可以使用 Composer 从一个已存在的包来创建新的项目. 这跟随后使用 git clone或svn checkout来安装 vendors 是一样的.
 
-There are several applications for this:
+有这么几个应用程序:
 
-1. You can deploy application packages.
-2. You can check out any package and start developing on patches for example.
-3. Projects with multiple developers can use this feature to bootstrap the
-   initial application for development.
+1. 你可以部署应用程序包.
+2. 你可以check out 任何包，并开始开发补丁.
+3. 有多个开发者的项目可以使用该特性来引导要开发的应用程序.
 
-To create a new project using composer you can use the "create-project" command.
-Pass it a package name, and the directory to create the project in. You can also
-provide a version as third argument, otherwise the latest version is used.
+要使用 composer 来创建一个新项目，你可以使用 "create-project" 命令。
+传递给它一个包名称， 以及要创建项目的路径. 你还可以把版本号作为第三个参数
+, 要不然就会使用最新的版本号.
 
-The directory is not allowed to exist, it will be created during installation.
+不允许已经存在的路径, 路径在安装时会被创建.
 
     php composer.phar create-project doctrine/orm path 2.2.0
 
-By default the command checks for the packages on packagist.org.
+默认该命令会检查 packagist.org 网站上面的包.
 
-### Options
+### 选项
 
-* **--repository-url:** Provide a custom repository to search for the package,
-  which will be used instead of packagist. Can be either an HTTP URL pointing
-  to a `composer` repository, or a path to a local `packages.json` file.
-* **--stability (-s):** Minimum stability of package. Defaults to `stable`.
-* **--prefer-source:** Install packages from `source` when available.
-* **--prefer-dist:** Install packages from `dist` when available.
-* **--dev:** Install packages listed in `require-dev`.
-* **--no-custom-installers:** Disables custom installers.
-* **--no-scripts:** Disables the execution of the scripts defined in the root
-  package.
-* **--no-progress:** Removes the progress display that can mess with some
-  terminals or scripts which don't handle backspace characters.
-* **--keep-vcs:** Skip the deletion of the VCS metadata for the created
-  project. This is mostly useful if you run the command in non-interactive
-  mode.
+* **--repository-url:** 提供一个自定义的仓库来搜索包,
+  这将会替代 packagist. 可以要么是指向
+  一个 `composer` 仓库的 HTTP URL 路径, 要么是一个本地 `packages.json` 文件的路径.
+* **--stability (-s):** 包的最小稳定版本. 默认是 `stable`.
+* **--prefer-source:** 如果可以，则安装来自 `source` 的包.
+* **--prefer-dist:** 如果可以，则安装来自 `dist` 的包.
+* **--dev:** 安装在 `require-dev` 里列出的包.
+* **--no-custom-installers:** 禁用自定义安装程序.
+* **--no-scripts:** 禁用在 root 包里定义的脚本的执行.
+* **--no-progress:** 移除可能会引起无法很好支持回退字符的一些终端或脚本的进度显示.
+* **--keep-vcs:** 跳出已创建项目的VCS元标签
+  . 如果你在非交互模式下执行该命令，那么这个选项非常有用.
 
 ## dump-autoload
 
-If you need to update the autoloader because of new classes in a classmap
-package for example, you can use "dump-autoload" to do that without having to
-go through an install or update.
+如果你需要更新自动加载器，比如类图包有一个新的类库
+, 你可以使用 "dump-autoload" 来达成这个任务，而无需通过安装或更新命令.
 
-Additionally, it can dump an optimized autoloader that converts PSR-0 packages
-into classmap ones for performance reasons. In large applications with many
-classes, the autoloader can take up a substantial portion of every request's
-time. Using classmaps for everything is less convenient in development, but
-using this option you can still use PSR-0 for convenience and classmaps for
-performance.
+此外，它还会dump出一个优化过的自动加载器，它会将 PSR-0 包
+转成类图，以便提升性能. 在拥有许多类库的大型项目中
+, 该自动加载器可以节省每个请求的响应时间
+. 使用类图在开发过程中有些不便, 但
+使用该选项，你仍旧可以因着方便而使用 PSR-0 的同时，还能出于性能的缘故使用
+类图.
 
-### Options
+### 选项
 
-* **--optimize (-o):** Convert PSR-0 autoloading to classmap to get a faster
-  autoloader. This is recommended especially for production, but can take
-  a bit of time to run so it is currently not done by default.
+* **--optimize (-o):** 将 PSR-0 autoloading 转换成类图（classmap）以便获得一个更快的
+  自动加载器. 对于生产环境，我们推荐使用此项, 但运行此项需要花些时间，
+  因此默认没有开启它。
 
-## help
+## 帮助
 
-To get more information about a certain command, just use `help`.
+要获取更多关于某条命令的帮助信息，只需要输入 `help`.
 
     $ php composer.phar help install
 
-## Environment variables
+## 环境变量
 
-You can set a number of environment variables that override certain settings.
-Whenever possible it is recommended to specify these settings in the `config`
-section of `composer.json` instead. It is worth noting that that the env vars
-will always take precedence over the values specified in `composer.json`.
+你可以设置一系列的环境变量来重写某些设置.
+只要有可能，我们推荐最好在 `composer.json` 文件中的 `config` 项目来指定这些设置
+. 在 `composer.json` 里指定的优先级相对于环境变量来说更高.
 
 ### COMPOSER
 
