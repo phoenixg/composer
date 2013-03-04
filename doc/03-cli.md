@@ -257,21 +257,20 @@
 * **--editor (-e):** 使用通过 `EDITOR` 环境变量定义的文本编辑器打开本地的 composer.json 文件.  
 使用 `--global` 选项时, 它会打开全局配置文件.
 * **--unset:** 移除由 `setting-key` 设置的配置元素.
-* **--list (-l):** 显示Show the list of current config variables.  With the `--global`
- option this lists the global configuration only.
-* **--file="..." (-f):** Operate on a specific file instead of composer.json. Note
- that this cannot be used in conjunction with the `--global` option.
+* **--list (-l):** 显示当前配置变量的列表.  当使用 `--global`
+ 选项的时候，这会只列出全局配置.
+* **--file="..." (-f):** 操作一个指定的文件，而非 composer.json. 注意
+ 这不能跟 `--global` 选项一起使用.
 
-### Modifying Repositories
+### 修改仓库
 
-In addition to modifying the config section, the `config` command also supports making
-changes to the repositories section by using it the following way:
+除了修改配置段落之外， `config` 命令还支持仓库的修改，这样来使用:
 
     $ php composer.phar config repositories.foo vcs http://github.com/foo/bar
 
-## create-project
+## 创建项目
 
-You can use Composer to create new projects from an existing package. This is
+你可以使用 Composer 从一个已存在的包来创建新的项目. This is
 the equivalent of doing a git clone/svn checkout followed by a composer install
 of the vendors.
 
