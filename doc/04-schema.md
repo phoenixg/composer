@@ -1,6 +1,6 @@
 # composer.json
 
-This chapter will explain all of the fields available in `composer.json`.
+本章将会解释所有在 `composer.json` 文件里可以使用的字段.
 
 ## JSON schema
 
