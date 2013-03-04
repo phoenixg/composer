@@ -149,8 +149,7 @@
 
     $ php composer.phar show
 
-If you want to see the details of a certain package, you can pass the package
-name.
+如果你想要看看某个包的详细信息，你可以把包名称传递给它.
 
     $ php composer.phar show monolog/monolog
 
@@ -169,23 +168,21 @@ name.
     requires
     php >=5.3.0
 
-You can even pass the package version, which will tell you the details of that
-specific version.
+你还甚至可以传递包的版本，这样它会告诉你那个特定版本的详细信息.
 
     $ php composer.phar show monolog/monolog 1.0.2
 
-### Options
+### 选项
 
-* **--installed (-i):** List the packages that are installed.
-* **--platform (-p):** List only platform packages (php & extensions).
-* **--self (-s):** List the root package info.
-* **--dev:** Include dev-required packages when combined with **--installed** or **--platform**.
+* **--installed (-i):** 列出已经安装了的包.
+* **--platform (-p):** 只列出平台包 (php & extensions).
+* **--self (-s):** 列出root包的信息.
+* **--dev:** 当使用 **--installed** 或 **--platform** 时，包括 dev-required 包的信息.
 
-## depends
+## 依赖
 
-The `depends` command tells you which other packages depend on a certain
-package. You can specify which link types (`require`, `require-dev`)
-should be included in the listing. By default both are used.
+`depends` 命令会告诉你还有其他什么包依赖于某个包
+. 你可以指定哪种链接类型 (`require`, `require-dev`) 包含在列表里. 默认两者都使用.
 
     $ php composer.phar depends --link-type=require monolog/monolog
 
@@ -195,75 +192,72 @@ should be included in the listing. By default both are used.
     symfony/monolog-bridge
     symfony/symfony
 
-### Options
+### 选项
 
-* **--link-type:** The link types to match on, can be specified multiple
-  times.
+* **--link-type:** 匹配的链接类型, 可被多次指定.
 
-## validate
+## 验证
 
-You should always run the `validate` command before you commit your
-`composer.json` file, and before you tag a release. It will check if your
-`composer.json` is valid.
+在你提交 `composer.json` 文件和发布一个标签前，你应该总是执行一下 `validate` 命令. 
+它会检查你的 
+`composer.json` 是否有效。
 
     $ php composer.phar validate
 
-## status
+## 状态
 
-If you often need to modify the code of your dependencies and they are
-installed from source, the `status` command allows you to check if you have
-local changes in any of them.
+如果你经常需要修改依赖包的代码，而他们是从源安装的，那么
+`status` 命令允许你检查它们在本地是否存在
+修改.
 
     $ php composer.phar status
 
-With the `--verbose` option you get some more information about what was
-changed:
+使用 `--verbose` 选项，你可以获得更多关于修改了什么的信息:
 
     $ php composer.phar status -v
     You have changes in the following dependencies:
     vendor/seld/jsonlint:
         M README.mdown
 
-## self-update
+## 自我更新
 
-To update composer itself to the latest version, just run the `self-update`
-command. It will replace your `composer.phar` with the latest version.
+要把 composer 本身更新到最新版本, 只需要执行 `self-update`
+命令. 它会用最新版本的 `composer.phar` 替代你现有的该文件.
 
     $ php composer.phar self-update
 
-If you have installed composer for your entire system (see [global installation](00-intro.md#globally)),
-you have to run the command with `root` privileges
+如果你为整个系统(见 [全局安装](00-intro.md#globally))安装过 composer,
+你就不得不用 `root` 权限来执行这条命令
 
     $ sudo composer self-update
 
-## config
+## 配置
 
-The `config` command allows you to edit some basic composer settings in either
-the local composer.json file or the global config.json file.
+`config` 命令允许你编辑一些基本的 composer 设置，它们或在
+本地的 composer.json 文件里，或是在全局的 config.json 文件里.
 
     $ php composer.phar config --list
 
-### Usage
+### 使用
 
 `config [options] [setting-key] [setting-value1] ... [setting-valueN]`
 
-`setting-key` is a configuration option name and `setting-value1` is a
-configuration value.  For settings that can take an array of values (like
-`github-protocols`), more than one setting-value arguments are allowed.
+`setting-key` 是配置选项的名称，而 `setting-value1` 是
+配置的值.  对于那些数组的设置 (比如像
+`github-protocols`), 它允许不止一个设置值作为参数.
 
-See the [config schema section](04-schema.md#config-root-only) for valid configuration
-options.
+见 [配置 schema 段](04-schema.md#config-root-only) 获得有效的配置选项
+.
 
-### Options
+### 选项
 
-* **--global (-g):** Operate on the global config file located at
-`$COMPOSER_HOME/config.json` by default.  Without this option, this command
-affects the local composer.json file or a file specified by `--file`.
-* **--editor (-e):** Open the local composer.json file using in a text editor as
-defined by the `EDITOR` env variable.  With the `--global` option, this opens
-the global config file.
-* **--unset:** Remove the configuration element named by `setting-key`.
-* **--list (-l):** Show the list of current config variables.  With the `--global`
+* **--global (-g):** 默认操作全局配置文件，它存放在
+`$COMPOSER_HOME/config.json` .  没有这个选项的话, 这条命令就会
+影响本地的 composer.json 文件或由 `--file` 所指定的文件.
+* **--editor (-e):** 使用通过 `EDITOR` 环境变量定义的文本编辑器打开本地的 composer.json 文件.  
+使用 `--global` 选项时, 它会打开全局配置文件.
+* **--unset:** 移除由 `setting-key` 设置的配置元素.
+* **--list (-l):** 显示Show the list of current config variables.  With the `--global`
  option this lists the global configuration only.
 * **--file="..." (-f):** Operate on a specific file instead of composer.json. Note
  that this cannot be used in conjunction with the `--global` option.
