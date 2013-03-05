@@ -181,11 +181,11 @@ VCS tag 名称. 如果那样的话，我们推荐忽略掉它.
 每个作者对象都可以具有如下属性:
 
 * **name:** 作者的名称. 通常是他的真名.
-* **email:** The author's email address.
-* **homepage:** An URL to the author's website.
-* **role:** The authors' role in the project (e.g. developer or translator)
+* **email:** 作者的email地址.
+* **homepage:** 作者的网站URL.
+* **role:** 作者在项目中担任的角色(e.g. developer 或 translator)
 
-An example:
+一个例子:
 
     {
         "authors": [
@@ -204,22 +204,22 @@ An example:
         ]
     }
 
-Optional, but highly recommended.
+这是可选的, 但极力推荐使用此项.
 
 ### support
 
-Various information to get support about the project.
+获取关于该项目帮助的各种信息.
 
 Support information includes the following:
 
-* **email:** Email address for support.
-* **issues:** URL to the Issue Tracker.
-* **forum:** URL to the Forum.
-* **wiki:** URL to the Wiki.
-* **irc:** IRC channel for support, as irc://server/channel.
-* **source:** URL to browse or download the sources.
+* **email:** 获取支持的email.
+* **issues:** Issue跟踪器的URL.
+* **forum:** 论坛的URL.
+* **wiki:** Wiki的URL.
+* **irc:** 获取支持的IRC频道, 形如 irc://server/channel.
+* **source:** 浏览的URL 或 源码的下载链接地址.
 
-An example:
+一个例子:
 
     {
         "support": {
@@ -228,7 +228,7 @@ An example:
         }
     }
 
-Optional.
+这是可选的.
 
 ### Package links
 
