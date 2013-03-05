@@ -4,20 +4,19 @@
 
 ## JSON schema
 
-We have a [JSON schema](http://json-schema.org) that documents the format and
-can also be used to validate your `composer.json`. In fact, it is used by the
-`validate` command. You can find it at:
+我们有一个格式文档 [JSON schema](http://json-schema.org) ，还可以用它来
+校验你的 `composer.json` 文件. 事实上, 它使用的是
+`validate` 命令. 你可以在这里找到它:
 [`res/composer-schema.json`](https://github.com/composer/composer/blob/master/res/composer-schema.json).
 
-## Root Package
+## Root 包
 
-The root package is the package defined by the `composer.json` at the root of
-your project. It is the main `composer.json` that defines your project
-requirements.
+root 包是在你的项目的根的 `composer.json` 定义的包
+. 这是定义你项目的要求包的主要的 `composer.json` 文件.
 
-Certain fields only apply when in the root package context. One example of
-this is the `config` field. Only the root package can define configuration.
-The config of dependencies is ignored. This makes the `config` field
+有些字段只在root包的上下文里才应用. 其中一个例子就是
+`config` 字段. 只有 root 包才能够定义配置.
+依赖包的配置会被忽略. 确保了 `config` 字段是
 `root-only`.
 
 If you clone one of those dependencies to work on it, then that package is the
