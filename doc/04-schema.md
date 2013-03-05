@@ -83,23 +83,21 @@ VCS tag 名称. 如果那样的话，我们推荐忽略掉它.
 默认, composer 支持三种类型:
 
 - **library:** 这是默认的. 它会简单地把文件拷贝进 `vendor`.
-- **metapackage:** An empty package that contains requirements and will trigger
-  their installation, but contains no files and will not write anything to the
-  filesystem. As such, it does not require a dist or source key to be
-  installable.
-- **composer-installer:** A package of type `composer-installer` provides an
-  installer for other packages that have a custom type. Read more in the
-  [dedicated article](articles/custom-installers.md).
+- **metapackage:** 一个包含了要求的空包, 他会出发这些要求（requirements）的安装
+  , 但是没有任何文件产生，也不会写进任何东西到文件系统
+  . 正是如此, 它不需要一个 dist 或 source key 来安装.
+- **composer-installer:** 一个类型 `composer-installer` 的类型会为其他拥有自定义类型的包提供一个
+  安装程序. 更多信息阅读
+  [专门的文章](articles/custom-installers.md).
 
-Only use a custom type if you need custom logic during installation. It is
-recommended to omit this field and have it just default to `library`.
+如果你需要自定义安装过程中的逻辑，那么就是用一个自定义类型. 不过我们推荐忽略掉它，
+只用默认的 `library` 即可.
 
 ### keywords
 
-An array of keywords that the package is related to. These can be used for
-searching and filtering.
+跟包有关的关键词数组. 它的用途是搜索和过滤.
 
-Examples:
+例子:
 
     logging
     events
@@ -107,27 +105,27 @@ Examples:
     redis
     templating
 
-Optional.
+这是可选的.
 
 ### homepage
 
-An URL to the website of the project.
+项目网站的URL.
 
-Optional.
+这是可选的.
 
 ### time
 
-Release date of the version.
+版本的发布日期.
 
-Must be in `YYYY-MM-DD` or `YYYY-MM-DD HH:MM:SS` format.
+必须是 `YYYY-MM-DD` 或 `YYYY-MM-DD HH:MM:SS` 格式.
 
-Optional.
+这是可选的.
 
 ### license
 
-The license of the package. This can be either a string or an array of strings.
+包的授权协议. 可以是一个字符串或字符串数组.
 
-The recommended notation for the most common licenses is (alphabetical):
+我们推荐的最常使用的协议是 (按字母排序):
 
     Apache-2.0
     BSD-2-Clause
@@ -143,12 +141,12 @@ The recommended notation for the most common licenses is (alphabetical):
     LGPL-3.0+
     MIT
 
-Optional, but it is highly recommended to supply this. More identifiers are
-listed at the [SPDX Open Source License Registry](http://www.spdx.org/licenses/).
+这是可选的, 但极力推荐应用此选项. 更多的标示符列在了
+ [SPDX 开源协议注册](http://www.spdx.org/licenses/).
 
-For closed-source software, you may use `"proprietary"` as the license identifier.
+对于闭源软件, 你可以使用 `"proprietary"` 作为协议标示符.
 
-An Example:
+一个例子:
 
     {
         "license": "MIT"
