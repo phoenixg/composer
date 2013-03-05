@@ -153,10 +153,10 @@ VCS tag 名称. 如果那样的话，我们推荐忽略掉它.
     }
 
 
-For a package, when there is a choice between licenses ("disjunctive license"),
-multiple can be specified as array.
+对于包来说, 如果可以在协议之间进行选择 ("disjunctive license"),
+如果要写多个协议，可以写成数组.
 
-An Example for disjunctive licenses:
+分离协议的一个例子:
 
     {
         "license": [
@@ -165,22 +165,22 @@ An Example for disjunctive licenses:
         ]
     }
 
-Alternatively they can be separated with "or" and enclosed in parenthesis;
+可选的，你可以用 "or" 来分隔，用圆括号括起来;
 
     {
         "license": "(LGPL-2.1 or GPL-3.0+)"
     }
 
-Similarly when multiple licenses need to be applied ("conjunctive license"),
-they should be separated with "and" and enclosed in parenthesis.
+当应用分离协议时，很相似的，还能使用结合协议 ("conjunctive license"),
+你可以使用 "and" 来分隔，用圆括号括起来.
 
 ### authors
 
-The authors of the package. This is an array of objects.
+包的作者. 这是一个对象数组.
 
-Each author object can have following properties:
+每个作者对象都可以具有如下属性:
 
-* **name:** The author's name. Usually his real name.
+* **name:** 作者的名称. 通常是他的真名.
 * **email:** The author's email address.
 * **homepage:** An URL to the author's website.
 * **role:** The authors' role in the project (e.g. developer or translator)
