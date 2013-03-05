@@ -19,40 +19,40 @@ root 包是在你的项目的根的 `composer.json` 定义的包
 依赖包的配置会被忽略. 确保了 `config` 字段是
 `root-only`.
 
-If you clone one of those dependencies to work on it, then that package is the
-root package. The `composer.json` is identical, but the context is different.
+如果你克隆了一个包,你在这上面工作, 那么该包就是
+root 包.  `composer.json` 是相同的, 上下文则是不同的.
 
-> **Note:** A package can be the root package or not, depending on the context.
-> For example, if your project depends on the `monolog` library, your project
-> is the root package. However, if you clone `monolog` from GitHub in order to
-> fix a bug in it, then `monolog` is the root package.
+> **注意:** 一个包可以是 root 包, 也可以不是, 这取决于上下文环境.
+> 比如, 如果你的项目依赖于 `monolog` 类库, 那么你的项目
+> 就是 root 包. 然而, 如果你从GitHub克隆了 `monolog` 包，为了要修复其中的一个bug
+> , 那么这个 `monolog` 就是 root 包.
 
-## Properties
+## 属性
 
 ### name
 
-The name of the package. It consists of vendor name and project name,
-separated by `/`.
+包的名称. 它由 vendor 名称和项目名称所组成,
+使用 `/` 来分隔.
 
-Examples:
+例子:
 
 * monolog/monolog
 * igorw/event-source
 
-Required for published packages (libraries).
+对于发布的包是必填的 (即类库).
 
 ### description
 
-A short description of the package. Usually this is just one line long.
+关于包的简短叙述. 只要写成一句话就行.
 
-Required for published packages (libraries).
+对于发布的包是必填的 (即类库).
 
 ### version
 
-The version of the package.
+包的版本.
 
-This must follow the format of `X.Y.Z` with an optional suffix of `-dev`,
-`-alphaN`, `-betaN` or `-RCN`.
+必须遵循 `X.Y.Z` 的格式，可选的后缀是 `-dev`,
+`-alphaN`, `-betaN` 或 `-RCN`.
 
 Examples:
 
@@ -65,27 +65,24 @@ Examples:
     1.0.0-beta2
     1.0.0-RC5
 
-Optional if the package repository can infer the version from somewhere, such
-as the VCS tag name in the VCS repository. In that case it is also recommended
-to omit it.
+如果包仓库可以从某处找到版本, 比如VCS 仓库里的
+VCS tag 名称. 如果那样的话，我们推荐忽略掉它.
 
-> **Note:** Packagist uses VCS repositories, so the statement above is very
-> much true for Packagist as well. Specifying the version yourself will
-> most likely end up creating problems at some point due to human error.
+> **注意:** Packagist 使用 VCS 仓库, 因此上面的陈述对于
+> Packagist 来说也是对的. 如果人工地指定版本，有可能跟版本仓库里的版本发生冲突，产生错误.
 
 ### type
 
-The type of the package. It defaults to `library`.
+包的类型. 默认是 `library`.
 
-Package types are used for custom installation logic. If you have a package
-that needs some special logic, you can define a custom type. This could be a
-`symfony-bundle`, a `wordpress-plugin` or a `typo3-module`. These types will
-all be specific to certain projects, and they will need to provide an
-installer capable of installing packages of that type.
+使用包的类型来自定义安装逻辑. 如果你有一个包需要一些特殊的逻辑
+, 你可以定义一个自定义类型. 它可以是
+`symfony-bundle`, 一个 `wordpress-plugin` 或者一个 `typo3-module`. 这些类型将会指定到某个项目
+， 而他们需要提供一个可以安装那种类型的包的安装程序.
 
-Out of the box, composer supports three types:
+默认, composer 支持三种类型:
 
-- **library:** This is the default. It will simply copy the files to `vendor`.
+- **library:** 这是默认的. 它会简单地把文件拷贝进 `vendor`.
 - **metapackage:** An empty package that contains requirements and will trigger
   their installation, but contains no files and will not write anything to the
   filesystem. As such, it does not require a dist or source key to be
