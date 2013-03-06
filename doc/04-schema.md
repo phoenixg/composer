@@ -232,10 +232,10 @@ Support information includes the following:
 
 ### Package links
 
-All of the following take an object which maps package names to
-[version constraints](01-basic-usage.md#package-versions).
+下面所有的都是获得一个把包名称映射到
+[版本约束条件](01-basic-usage.md#package-versions) 的对象.
 
-Example:
+例子:
 
     {
         "require": {
@@ -243,9 +243,9 @@ Example:
         }
     }
 
-All links are optional fields.
+所有链接都是可选的.
 
-`require` and `require-dev` additionally support stability flags (root-only).
+`require` 和 `require-dev` 会额外支持稳定标识符 (root-only).
 These allow you to further restrict or expand the stability of a package beyond
 the scope of the [minimum-stability](#minimum-stability) setting. You can apply
 them to a constraint, or just apply them to an empty constraint if you want to
