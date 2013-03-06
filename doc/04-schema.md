@@ -246,12 +246,10 @@ Support information includes the following:
 所有链接都是可选的.
 
 `require` 和 `require-dev` 会额外支持稳定标识符 (root-only).
-These allow you to further restrict or expand the stability of a package beyond
-the scope of the [minimum-stability](#minimum-stability) setting. You can apply
-them to a constraint, or just apply them to an empty constraint if you want to
-allow unstable packages of a dependency's dependency for example.
+这会允许你扩展限制，或扩展在 [最小稳定版本](#minimum-stability) 里所定义的包的稳定版设置. 你可以将其
+应用在约束条件上, 或仅仅应用给一个空的约束条件，如果你觉得非稳定版也无所谓的话.
 
-Example:
+例子:
 
     {
         "require": {
@@ -260,15 +258,14 @@ Example:
         }
     }
 
-`require` and `require-dev` additionally support explicit references (i.e.
-commit) for dev versions to make sure they are locked to a given state, even
-when you run update. These only work if you explicitly require a dev version
-and append the reference with `#<ref>`. Note that while this is convenient at
-times, it should not really be how you use packages in the long term. You
-should always try to switch to tagged releases as soon as you can, especially
-if the project you work on will not be touched for a while.
+`require` 和 `require-dev` 会额外地支持明确的引用 (即
+commit) 或开发版本， 以便确保它们在某种状态下锁定, 甚至
+当你运行 update 的时候. 这些只有在你明确要求了一个 dev 版本并且用
+ `#<ref>` 来引用的时候才会起效. 注意，尽管有时这么做很方便
+, 总体来说你不应该这样来使用包. 你应该永远尝试使用 tagged 
+的发布版, 尤其是你的项目很久没动过了的时候.
 
-Example:
+例子:
 
     {
         "require": {
@@ -277,60 +274,54 @@ Example:
         }
     }
 
-It is possible to inline-alias a package constraint so that it matches a
-constraint that it otherwise would not. For more information [see the
-aliases article](articles/aliases.md).
+你可以内联别名一个包约束条件，以便它匹配一个约束条件. 
+要获得更多信息 [参见别名文章
+](articles/aliases.md).
 
 #### require
 
-Lists packages required by this package. The package will not be installed
-unless those requirements can be met.
+列出该包所要求的包. 除非遇到这些要求，否则该包不会被安装.
 
 #### require-dev <span>(root-only)</span>
 
-Lists packages required for developing this package, or running
-tests, etc. The dev requirements of the root package only will be installed
-if `install` or `update` is ran with `--dev`.
+为开发缘故，列出包, 或比如说运行测试
+等等. root 包的 dev 要求只有在使用 `--dev` 运行
+ `install` 或 `update` 时才能起效。
 
-Packages listed here and their dependencies can not overrule the resolution
-found with the packages listed in require. This is even true if a different
-version of a package would be installable and solve the conflict. The reason
-is that `install --dev` produces the exact same state as just `install`, apart
-from the additional dev packages.
+在这里所列出的包和它们的依赖包不能打破在 require 里的包
+. 即使一个不同的包版本可被安装且能够解决冲突，也是不能打破的. 理由是
+ `install --dev` 会产生跟 `install` 相同的状态, 独立于额外的 dev 包.
 
-If you run into such a conflict, you can specify the conflicting package in
-the require section and require the right version number to resolve the
-conflict.
+如果你遇到了这种冲突问题, 你可以在 require 段落指定冲突的包,
+并 require 正确的版本号来解决冲突.
 
 #### conflict
 
-Lists packages that conflict with this version of this package. They
-will not be allowed to be installed together with your package.
+列出所有同该版本的包冲突的包. 它们
+不允许同你的包一起安装.
 
 #### replace
 
-Lists packages that are replaced by this package. This allows you to fork a
-package, publish it under a different name with its own version numbers, while
-packages requiring the original package continue to work with your fork because
-it replaces the original package.
+列出被这个包替代的包. 它允许你 fork 一个
+包, 并在一个不同的名称下，使用它自己的版本号来发布, 于此同时,
+包要求原有的包继续同你的 fork 工作，因为它替代了原有的包.
 
-This is also useful for packages that contain sub-packages, for example the main
-symfony/symfony package contains all the Symfony Components which are also
-available as individual packages. If you require the main package it will
-automatically fulfill any requirement of one of the individual components,
-since it replaces them.
+这对于包含子包的包来说非常有用, 比如主要的
+symfony/symfony 包包含了全部的 Symfony 组件，不过它们也可以
+作为独立的包而使用. 要是你要求了主包， 它会自动实现独立组件的任何要求,
+因为它会替代它们.
 
-Caution is advised when using replace for the sub-package purpose explained
-above. You should then typically only replace using `self.version` as a version
-constraint, to make sure the main package only replaces the sub-packages of
-that exact version, and not any other version, which would be incorrect.
+我们推荐小心使用子包的替代，原因如上所述
+. 典型地，你应该仅仅使用 `self.version` 作为一个版本约束条件
+, 要确保主包只替代那个确切的子包版本
+, 而不是其他什么版本，因为其他版本可能会出错.
 
 #### provide
 
-List of other packages that are provided by this package. This is mostly
-useful for common interfaces. A package could depend on some virtual
-`logger` package, any library that implements this logger interface would
-simply list it in `provide`.
+列出由该包提供的其他包. 对于常用接口来说，这很有用
+. 一个包可以依赖于一些虚拟的
+`logger` 包, 任何植入该 logger 接口的类库都会
+简单地列在 `provide` 里面.
 
 ### suggest
 
