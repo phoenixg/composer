@@ -325,15 +325,13 @@ symfony/symfony 包包含了全部的 Symfony 组件，不过它们也可以
 
 ### suggest
 
-Suggested packages that can enhance or work well with this package. These are
-just informational and are displayed after the package is installed, to give
-your users a hint that they could add more packages, even though they are not
-strictly required.
+推荐包可以增强该包，或者同该包一起工作得很好. 这些仅仅是
+在该包安装后显示的信息, 要给你的用户一个暗示，告诉他们
+他们可以添加更多的包, 甚至是没有严格要求了的包.
 
-The format is like package links above, except that the values are free text
-and not version constraints.
+格式跟包链接一样, 除了这个区别，就是值是任何的字符串，而非版本约束条件.
 
-Example:
+例子:
 
     {
         "suggest": {
@@ -343,22 +341,21 @@ Example:
 
 ### autoload
 
-Autoload mapping for a PHP autoloader.
+自动加载会映射 PHP 的自动加载器.
 
-Currently [`PSR-0`](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md)
-autoloading, `classmap` generation and `files` are supported. PSR-0 is the recommended way though
-since it offers greater flexibility (no need to regenerate the autoloader when you add
-classes).
+当前支持 [`PSR-0`](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md)
+autoloading, `classmap` 生成 和 `files` . PSR-0 是推荐的方式，因为
+它提供了更大的灵活性 (添加类的时候无需重新生成自动加载器).
 
 #### PSR-0
 
-Under the `psr-0` key you define a mapping from namespaces to paths, relative to the
-package root. Note that this also supports the PEAR-style non-namespaced convention.
+在 `psr-0` 键下面，你要定义一个命名空间和路径之间的映射, 跟包的 root 有关
+. 注意，还支持 PEAR-风格的非命名空间的约定.
 
-The PSR-0 references are all combined, during install/update, into a single key => value
-array which may be found in the generated file `vendor/composer/autoload_namespaces.php`.
+PSR-0 引用在 install/update 过程中都结合起来，到了一个单 key => value
+数组，它可以在生成的文件 `vendor/composer/autoload_namespaces.php` 里找到.
 
-Example:
+例子:
 
     {
         "autoload": {
@@ -370,8 +367,8 @@ Example:
         }
     }
 
-If you need to search for a same prefix in multiple directories,
-you can specify them as an array as such:
+如果你需要在多个目录中搜索一个相同的前缀,
+你可以像这样用数组来指定它们:
 
     {
         "autoload": {
@@ -379,10 +376,10 @@ you can specify them as an array as such:
         }
     }
 
-The PSR-0 style is not limited to namespace declarations only but may be
-specified right down to the class level. This can be useful for libraries with
-only one class in the global namespace. If the php source file is also located
-in the root of the package, for example, it may be declared like this:
+PSR-0 风格不限于命名空间的声明, 只是可能
+会在类级别进行指定. 对于在全局命名空间中只有一个类的类库来说，这很有用
+. 如果 php 源文件也位于包的 root 路径
+, 比如, 可以像这样来声明:
 
     {
         "autoload": {
@@ -390,8 +387,7 @@ in the root of the package, for example, it may be declared like this:
         }
     }
 
-If you want to have a fallback directory where any namespace can be, you can
-use an empty prefix like:
+如果你想要有一个任何命名空间都可以做的 fallback 目录, 你可以使用一个这样的空前缀:
 
     {
         "autoload": {
