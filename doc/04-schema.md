@@ -397,16 +397,15 @@ PSR-0 风格不限于命名空间的声明, 只是可能
 
 #### Classmap
 
-The `classmap` references are all combined, during install/update, into a single
-key => value array which may be found in the generated file
-`vendor/composer/autoload_classmap.php`. This map is built by scanning for
-classes in all `.php` and `.inc` files in the given directories/files.
+`classmap` 引用都是在 install/update 过程中结合起来的, 结合进一个
+key => value 的数组，它可以在所生成的
+`vendor/composer/autoload_classmap.php` 文件找到. 该类图是通过扫描全部的给定文件或目录下的
+ `.php` 和 `.inc` 文件构建出的。
 
-You can use the classmap generation support to define autoloading for all libraries
-that do not follow PSR-0. To configure this you specify all directories or files
-to search for classes.
+你可以使用该类图的生成支持来定义全部不遵循
+ PSR-0 标准的类库的自动加载. 要配置该项，你需要在全部的目录或文件中搜索类.
 
-Example:
+例子:
 
     {
         "autoload": {
@@ -416,11 +415,10 @@ Example:
 
 #### Files
 
-If you want to require certain files explicitly on every request then you can use
-the 'files' autoloading mechanism. This is useful if your package includes PHP functions
-that cannot be autoloaded by PHP.
+如果你想要在每次请求时明确要求某些文件, 那么你可以使用
+ 'files' 自动加载机制. 如果你的包包括了无法被PHP自动加载的 PHP 函数，那么这就很有用了.
 
-Example:
+例子:
 
     {
         "autoload": {
@@ -430,35 +428,35 @@ Example:
 
 ### include-path
 
-> **DEPRECATED**: This is only present to support legacy projects, and all new code
-> should preferably use autoloading. As such it is a deprecated practice, but the
-> feature itself will not likely disappear from Composer.
+> **已废弃**: 仍然保留该项是为了支持遗留项目, 所有新代码
+> 都应该使用自动加载. 正因如此，这才被废弃使用, 但是
+> 该特性本身应该不会从 Composer 里去掉.
 
-A list of paths which should get appended to PHP's `include_path`.
+要被PHP 的 `include_path` 所添加的一系列路径.
 
-Example:
+例子:
 
     {
         "include-path": ["lib/"]
     }
 
-Optional.
+这是可选的.
 
 ### target-dir
 
-Defines the installation target.
+定义了安装目标.
 
-In case the package root is below the namespace declaration you cannot
-autoload properly. `target-dir` solves this problem.
+万一包的 root 在命名空间声明以下， 那么你就无法
+正常地使用自动加载. `target-dir` 解决了这个问题.
 
-An example is Symfony. There are individual packages for the components. The
-Yaml component is under `Symfony\Component\Yaml`. The package root is that
-`Yaml` directory. To make autoloading possible, we need to make sure that it
-is not installed into `vendor/symfony/yaml`, but instead into
-`vendor/symfony/yaml/Symfony/Component/Yaml`, so that the autoloader can load
-it from `vendor/symfony/yaml`.
+一个例子就是 Symfony. 对于组件而言，存在独立的包. 
+Yaml 组件是在 `Symfony\Component\Yaml` 下面. 包的 root 是
+`Yaml` 目录. 为了让自动加载可行, 我们需要确保它
+没有被安装进 `vendor/symfony/yaml`, 而是装进了
+`vendor/symfony/yaml/Symfony/Component/Yaml`, 以便自动加载器可以从
+ `vendor/symfony/yaml` 来进行加载.
 
-To do that, `autoload` and `target-dir` are defined as follows:
+要这么做, 请按一下方式定义 `autoload` 和 `target-dir` :
 
     {
         "autoload": {
@@ -467,13 +465,13 @@ To do that, `autoload` and `target-dir` are defined as follows:
         "target-dir": "Symfony/Component/Yaml"
     }
 
-Optional.
+这是可选的.
 
 ### minimum-stability <span>(root-only)</span>
 
-This defines the default behavior for filtering packages by stability. This
-defaults to `stable`, so if you rely on a `dev` package, you should specify
-it in your file to avoid surprises.
+这定义了过滤包的稳定版的默认方式. 默认是
+ `stable`, 所以要是你依赖于一个 `dev` 包, 你就应该在你的文件中指出它，来避免
+ 出现奇怪的情况.
 
 All versions of each package are checked for stability, and those that are less
 stable than the `minimum-stability` setting will be ignored when resolving
