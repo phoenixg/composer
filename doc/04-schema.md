@@ -500,13 +500,12 @@ Yaml 组件是在 `Symfony\Component\Yaml` 下面. 包的 root 是
 * **vcs:** 版本控制系统的仓库可以抓取来自 git,
   svn 和 hg 的仓库.
 * **pear:** 使用该项，你可以导入任何的 pear 仓库进你的 composer 项目中.
-* **package:** If you depend on a project that does not have any support for
-  composer whatsoever you can define the package inline using a `package`
-  repository. You basically just inline the `composer.json` object.
+* **package:** 如果你依赖于一个对 composer 丝毫也不支持的项目, 
+  没准你可以使用一个 `package` 仓库来内联地定义这个包. 基本上你只需要内联该 `composer.json` 对象即可.
 
-For more information on any of these, see [Repositories](05-repositories.md).
+要获得更多这方面的信息, 参见 [仓库](05-repositories.md).
 
-Example:
+例子:
 
     {
         "repositories": [
@@ -550,16 +549,15 @@ Example:
         ]
     }
 
-> **Note:** Order is significant here. When looking for a package, Composer
-will look from the first to the last repository, and pick the first match.
-By default Packagist is added last which means that custom repositories can
-override packages from it.
+> **注意:** 这里顺序很重要. 当搜索一个包的时候, Composer
+会从第一个开始查找，一直查到最后一个仓库, 挑选出第一个匹配的结果.
+默认的 Packagist 在最后被添加上，这意味着自定义的仓库会重写来自那上面的包.
 
 ### config <span>(root-only)</span>
 
-A set of configuration options. It is only used for projects.
+一些配置选项. 仅仅针对项目来使用.
 
-The following options are supported:
+支持以下选项:
 
 * **process-timeout:** Defaults to `300`. The duration processes like git clones
   can run before Composer assumes they died out. You may need to make this
@@ -598,7 +596,7 @@ The following options are supported:
   define a notification URL, so that they get notified whenever a package from
   that repository is installed. This option allows you to disable that behaviour.
 
-Example:
+例子:
 
     {
         "config": {
@@ -608,10 +606,9 @@ Example:
 
 ### scripts <span>(root-only)</span>
 
-Composer allows you to hook into various parts of the installation process
-through the use of scripts.
+Composer 允许你 hook 进安装过程的几种部分里，通过以下脚本实现.
 
-See [Scripts](articles/scripts.md) for events details and examples.
+见 [脚本](articles/scripts.md) 来获取事件的详细信息和例子.
 
 ### extra
 
@@ -622,15 +619,15 @@ handler, you can do:
 
     $extra = $event->getComposer()->getPackage()->getExtra();
 
-Optional.
+这是可选的.
 
 ### bin
 
 A set of files that should be treated as binaries and symlinked into the `bin-dir`
 (from config).
 
-See [Vendor Binaries](articles/vendor-binaries.md) for more details.
+参见 [Vendor Binaries](articles/vendor-binaries.md) 获得更多信息.
 
-Optional.
+这是可选的.
 
-&larr; [Command-line interface](03-cli.md)  |  [Repositories](05-repositories.md) &rarr;
+&larr; [命令行接口](03-cli.md)  |  [仓库](05-repositories.md) &rarr;
