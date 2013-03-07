@@ -473,37 +473,33 @@ Yaml 组件是在 `Symfony\Component\Yaml` 下面. 包的 root 是
  `stable`, 所以要是你依赖于一个 `dev` 包, 你就应该在你的文件中指出它，来避免
  出现奇怪的情况.
 
-All versions of each package are checked for stability, and those that are less
-stable than the `minimum-stability` setting will be ignored when resolving
-your project dependencies. Specific changes to the stability requirements of
-a given package can be done in `require` or `require-dev` (see
-[package links](#package-links)).
+每个包的全部版本都经过了稳定版检查, 当解析你项目的依赖包时，那些比 `minimum-stability` 还不稳定的版本
+会被忽略. 要特别针对某个给定包的稳定版要求作出改变
+，可以在 `require` 或 `require-dev` (参见
+[包链接](#package-links)).
 
-Available options (in order of stability) are `dev`, `alpha`, `beta`, `RC`,
-and `stable`.
+可选的选项(按稳定程度排序) 有 `dev`, `alpha`, `beta`, `RC`,
+和 `stable`.
 
 ### repositories <span>(root-only)</span>
 
-Custom package repositories to use.
+自定义使用的包仓库.
 
-By default composer just uses the packagist repository. By specifying
-repositories you can get packages from elsewhere.
+默认地， composer 仅仅使用 packagist 仓库. 通过指定仓库
+，你可以获得任何地方的包.
 
-Repositories are not resolved recursively. You can only add them to your main
-`composer.json`. Repository declarations of dependencies' `composer.json`s are
-ignored.
+仓库并不是递归地被解析的. 你只能把它们添加进你的主
+`composer.json` 文件中. 依赖包的仓库声明 `composer.json` 则被忽略.
 
-The following repository types are supported:
+支持以下的仓库类型:
 
-* **composer:** A composer repository is simply a `packages.json` file served
-  via the network (HTTP, FTP, SSH), that contains a list of `composer.json`
-  objects with additional `dist` and/or `source` information. The `packages.json`
-  file is loaded using a PHP stream. You can set extra options on that stream
-  using the `options` parameter.
-* **vcs:** The version control system repository can fetch packages from git,
-  svn and hg repositories.
-* **pear:** With this you can import any pear repository into your composer
-  project.
+* **composer:** 一个 composer 仓库就是一个简单的 `packages.json` 文件, 
+  通过网络来服务 (HTTP, FTP, SSH), 它包含了一系列的 `composer.json`
+  对象，还含额外的 `dist` 和/或 `source` 信息. 该 `packages.json`
+  文件是使用 PHP 流来加载的. 你可以使用 `options` 参数来设置该流的额外选项.
+* **vcs:** 版本控制系统的仓库可以抓取来自 git,
+  svn 和 hg 的仓库.
+* **pear:** 使用该项，你可以导入任何的 pear 仓库进你的 composer 项目中.
 * **package:** If you depend on a project that does not have any support for
   composer whatsoever you can define the package inline using a `package`
   repository. You basically just inline the `composer.json` object.
