@@ -1,20 +1,18 @@
-# Repositories
+# 仓库
 
-This chapter will explain the concept of packages and repositories, what kinds
-of repositories are available, and how they work.
+本章将解释包和仓库的概念, 什么类型的仓库是可被获得的，以及它们是如何工作的。
 
-## Concepts
+## 概念
 
-Before we look at the different types of repositories that exist, we need to
-understand some of the basic concepts that composer is built on.
+在我们查看不同类型的仓库之前，我们需要
+理解一些 composer 所基于的基本概念.
 
-### Package
+### 包
 
-Composer is a dependency manager. It installs packages locally. A package is
-essentially just a directory containing something. In this case it is PHP
-code, but in theory it could be anything. And it contains a package
-description which has a name and a version. The name and the version are used
-to identify the package.
+Composer 是一个依赖管理器. 它将包安装在本地. 一个包基本上就是一个
+包含了一些东西的目录. 在这种情况下，它就是 PHP
+代码, 但理论上讲， 它可以是任何东西. 它包含了一个包的描述，有一个名称和一个版本
+. 名称和版本用来鉴别是哪个包.
 
 In fact, internally composer sees every version as a separate package. While
 this distinction does not matter when you are using composer, it's quite
