@@ -14,9 +14,8 @@ Composer 是一个依赖管理器. 它将包安装在本地. 一个包基本上�
 代码, 但理论上讲， 它可以是任何东西. 它包含了一个包的描述，有一个名称和一个版本
 . 名称和版本用来鉴别是哪个包.
 
-In fact, internally composer sees every version as a separate package. While
-this distinction does not matter when you are using composer, it's quite
-important when you want to change it.
+事实上, composer 内部将每个版本当做一个独立的包. 这种区别对你
+使用 composer 没有影响, 但是当你要去改变它时，这很重要.
 
 In addition to the name and the version, there is useful metadata. The information
 most relevant for installation is the source definition, which describes where
