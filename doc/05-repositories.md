@@ -17,51 +17,47 @@ Composer 是一个依赖管理器. 它将包安装在本地. 一个包基本上�
 事实上, composer 内部将每个版本当做一个独立的包. 这种区别对你
 使用 composer 没有影响, 但是当你要去改变它时，这很重要.
 
-In addition to the name and the version, there is useful metadata. The information
-most relevant for installation is the source definition, which describes where
-to get the package contents. The package data points to the contents of the
-package. And there are two options here: dist and source.
+除了名称和版本之外，还有有用的 metadata. 同安装最有关系的信息
+就是 source 的定义, 它描述了哪里可以获得包内容的信息
+. 包数据指向包的内容. 这里有两个选项: dist 和 source.
 
-**Dist:** The dist is a packaged version of the package data. Usually a
-released version, usually a stable release.
+**Dist:** dist 是包数据的打包版本. 通常是一个
+发行版, 且通常是稳定版.
 
-**Source:** The source is used for development. This will usually originate
-from a source code repository, such as git. You can fetch this when you want
-to modify the downloaded package.
+**Source:** source 用来做开发. 这通常会引源自一个源代码的仓库, 
+比如 git. 当你要修改下载的包时，你可以这样获取它.
 
-Packages can supply either of these, or even both. Depending on certain
-factors, such as user-supplied options and stability of the package, one will
-be preferred.
+Packages 可以提供两者之一，或者两者都提供. 这取决于某种因素
+, 比如 user-supplied 选项，以及包的稳定性, 推荐使用一个.
 
 ### Repository
 
-A repository is a package source. It's a list of packages/versions. Composer
-will look in all your repositories to find the packages your project requires.
+一个仓库就是一个包的源. 这是一系列的包/版本. Composer
+将会查看全部的仓库，从而找到你的项目所要求的包.
 
-By default only the Packagist repository is registered in Composer. You can
-add more repositories to your project by declaring them in `composer.json`.
+默认地，Composer 只注册了 Packagist 仓库. 你可以将更多的
+仓库添加进你的项目中去，只需在 `composer.json` 文件中声明即可. 
 
-Repositories are only available to the root package and the repositories
-defined in your dependencies will not be loaded. Read the
-[FAQ entry](faqs/why-can't-composer-load-repositories-recursively.md) if you
-want to learn why.
+仓库只在 root 包里才可获得, 在你的依赖包中定义的
+仓库不会被加载. 请阅读
+[FAQ 条目](faqs/why-can't-composer-load-repositories-recursively.md) 要是你想知道为什么的话.
 
-## Types
+## 类型
 
 ### Composer
 
-The main repository type is the `composer` repository. It uses a single
-`packages.json` file that contains all of the package metadata.
+主仓库的类型是 `composer` 仓库. 它使用了单个
+`packages.json` 文件，包含了全部包的 metadata.
 
-This is also the repository type that packagist uses. To reference a
-`composer` repository, just supply the path before the `packages.json` file.
-In case of packagist, that file is located at `/packages.json`, so the URL of
-the repository would be `packagist.org`. For `example.org/packages.json` the
-repository URL would be `example.org`.
+它还是 packagist 所使用的仓库类型. 要引用一个
+`composer` 仓库, 只需在 `packages.json` 的前面提供路径.
+比如说 packagist, 该文件位于 `/packages.json`, 所以仓库的 URL 就是
+ `packagist.org`. 对于 `example.org/packages.json` 那么仓库的 URL
+就是 `example.org`.
 
 #### packages
 
-The only required field is `packages`. The JSON structure is as follows:
+唯一的必填字段就是 `packages`. JSON 格式的结构如下:
 
     {
         "packages": {
