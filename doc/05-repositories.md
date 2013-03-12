@@ -70,14 +70,13 @@ Packages 可以提供两者之一，或者两者都提供. 这取决于某种因
         }
     }
 
-The `@composer.json` marker would be the contents of the `composer.json` from
-that package version including as a minimum:
+`@composer.json` 标识就是 `composer.json` 的内容，来自于包含一个作为最小版本的包:
 
 * name
 * version
 * dist or source
 
-Here is a minimal package definition:
+这里是一个最小版本的定义:
 
     {
         "name": "smarty/smarty",
@@ -88,23 +87,22 @@ Here is a minimal package definition:
         }
     }
 
-It may include any of the other fields specified in the [schema](04-schema.md).
+它可以包含任何在[schema](04-schema.md) 里指定的字段.
 
 #### notify-batch
 
-The `notify-batch` field allows you to specify an URL that will be called
-every time a user installs a package. The URL can be either an absolute path
-(that will use the same domain as the repository) or a fully qualified URL.
+`notify-batch` 字段允许你指定一个 URL ，该 URL在用户安装一个包的时候就会被调用
+. 该 URL 既可以是绝对路径
+(使用和仓库一样的域名) 也可以是一个 fully qualified URL.
 
-An example value:
+一个值的例子:
 
     {
         "notify-batch": "/downloads/"
     }
 
-For `example.org/packages.json` containing a `monolog/monolog` package, this
-would send a `POST` request to `example.org/downloads/` with following
-JSON request body:
+对于包含一个 `monolog/monolog` 包的 `example.org/packages.json` , 这
+会发送一个 `POST` 请求给 `example.org/downloads/` ，请求的 JSON body是:
 
     {
         "downloads": [
@@ -112,18 +110,16 @@ JSON request body:
         ]
     }
 
-The version field will contain the normalized representation of the version
-number.
+版本字段包含了 normalized 的版本号.
 
-This field is optional.
+该字段是可选的.
 
 #### includes
 
-For larger repositories it is possible to split the `packages.json` into
-multiple files. The `includes` field allows you to reference these additional
-files.
+对于更大的仓库，可以将 `packages.json` 分隔成
+多个文件.  `includes` 字段允许你引用这些额外的文件.
 
-An example:
+一个例子:
 
     {
         "includes": {
@@ -139,13 +135,11 @@ An example:
         }
     }
 
-The SHA-1 sum of the file allows it to be cached and only re-requested if the
-hash changed.
+文件的 SHA-1 sum 值允许它被缓存，并且只有当hash改变了，才重新要求它.
 
-This field is optional. You probably don't need it for your own custom
-repository.
+这个字段是可选的. 你自己自定义的仓库很可能不需要它.
 
-#### provider-includes and providers-url
+#### provider-includes 和 providers-url
 
 For very large repositories like packagist.org using the so-called provider
 files is the preferred method. The `provider-includes` field allows you to
